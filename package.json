@@ -1,0 +1,56 @@
+{
+  "name": "@ripio/abi-wrappers",
+  "version": "1.0.0",
+  "engines": {
+    "node": ">=6.12"
+  },
+  "description": "Low-level diaspore smart contract wrappers generated using @0x/abi-gen",
+  "main": "lib/src/index.js",
+  "files": [
+    "lib/**/*"
+  ],
+  "scripts": {
+    "build": "tsc -b && yarn uglify",
+    "build:ci": "yarn build",
+    "lint": "tslint --format stylish --project .",
+    "uglify": "node_modules/uglifyjs-folder/cli.js lib/src/generated-wrappers -eo lib/src/generated-wrappers --pattern \"**/*.js,!**/*min.js\" -x .js",
+    "pre_build": "yarn clean && yarn generate_contract_wrappers",
+    "clean": "shx rm -rf src/generated-wrappers",
+    "generate_contract_wrappers": "node_modules/@0x/abi-gen/bin/abi-gen.js --abis ${npm_package_config_abis} --template contract.handlebars --partials 'partials/**/*.handlebars' --output src/generated-wrappers"
+  },
+  "config": {
+    "abis": "node_modules/@jpgonzalezra/diaspore-contract-artifacts/artifacts/@(*).json"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ripio/rcn-diaspore-abi-wrappers.git"
+  },
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/ripio/rcn-diaspore-abi-wrappers/issues"
+  },
+  "homepage": "https://github.com/ripio/rcn-diaspore-abi-wrappers/blob/master/README.md",
+  "devDependencies": {
+    "@0x/abi-gen": "2.0.9",
+    "@0x/types": "2.2.2",
+    "@jpgonzalezra/diaspore-contract-artifacts": "1.0.0",
+    "@types/lodash": "^4.14.119",
+    "@types/node": "^10.12.18",
+    "shx": "^0.2.2",
+    "tslint": "5.11.0",
+    "uglifyjs-folder": "^1.5.1"
+  },
+  "dependencies": {
+    "@0x/base-contract": "^5.0.5",
+    "@0x/utils": "^4.3.1",
+    "@0x/web3-wrapper": "^6.0.5",
+    "ethereum-types": "^2.1.2",
+    "ethers": "^4.0.27",
+    "lodash": "^4.17.11",
+    "rcn-diaspore-contract-artifacts": "git://github.com/ripio/rcn-diaspore-contract-artifacts.git#dev-1.0.0",
+    "typescript": "3.2.2"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
