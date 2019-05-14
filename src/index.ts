@@ -16,6 +16,7 @@ export * from './generated-wrappers/model';
 export * from './generated-wrappers/oracle_adapter';
 export * from './generated-wrappers/oracle';
 export * from './generated-wrappers/ownable';
+export * from './generated-wrappers/registry';
 export * from './generated-wrappers/rate_oracle';
 
 
