@@ -10,14 +10,29 @@ import { Response } from '../Response';
 import * as ethers from 'ethers';
 // tslint:enable:no-unused-variable
 
-export type SimpleDelegableEventArgs =
-    | SimpleDelegableOwnershipTransferredEventArgs;
+export type RegistryEventArgs =
+    | RegistryNewAddressEventArgs
+    | RegistryChangedAddressEventArgs
+    | RegistryOwnershipTransferredEventArgs;
 
-export enum SimpleDelegableEvents {
+export enum RegistryEvents {
+    NewAddress = 'NewAddress',
+    ChangedAddress = 'ChangedAddress',
     OwnershipTransferred = 'OwnershipTransferred',
 }
 
-export interface SimpleDelegableOwnershipTransferredEventArgs extends DecodedLogArgs {
+export interface RegistryNewAddressEventArgs extends DecodedLogArgs {
+    _nameKey: string;
+    _newAddress: string;
+}
+
+export interface RegistryChangedAddressEventArgs extends DecodedLogArgs {
+    _nameKey: string;
+    _oldAddress: string;
+    _newAddress: string;
+}
+
+export interface RegistryOwnershipTransferredEventArgs extends DecodedLogArgs {
     _previousOwner: string;
     _newOwner: string;
 }
@@ -26,15 +41,69 @@ export interface SimpleDelegableOwnershipTransferredEventArgs extends DecodedLog
 /* istanbul ignore next */
 // tslint:disable:no-parameter-reassignment
 // tslint:disable-next-line:class-name
-export class SimpleDelegableContract extends BaseContract {
+export class RegistryContract extends BaseContract {
     private _defaultEstimateGasFactor: number;
+    public keys = {
+        async callAsync(
+            index_0: BigNumber,
+        callData: Partial<CallData> = {},
+            defaultBlock?: BlockParam,
+        ): Promise<string
+        > {
+            const self = this as any as RegistryContract;
+            const encodedData = self._strictEncodeArguments('keys(uint256)', [index_0
+        ]);
+            const callDataWithDefaults = await BaseContract._applyDefaultsToTxDataAsync(
+            {
+            to: self.address,
+            ...callData,
+            data: encodedData,
+            },
+            self._web3Wrapper.getContractDefaults(),
+            );
+            const rawCallResult = await self._web3Wrapper.callAsync(callDataWithDefaults, defaultBlock);
+            BaseContract._throwIfRevertWithReasonCallResult(rawCallResult);
+            const abiEncoder = self._lookupAbiEncoder('keys(uint256)');
+            // tslint:disable boolean-naming
+            const result = abiEncoder.strictDecodeReturnValue<string
+        >(rawCallResult);
+            // tslint:enable boolean-naming
+            return result;
+        },};
+    public storedAddresses = {
+        async callAsync(
+            index_0: string,
+        callData: Partial<CallData> = {},
+            defaultBlock?: BlockParam,
+        ): Promise<[boolean, string]
+        > {
+            const self = this as any as RegistryContract;
+            const encodedData = self._strictEncodeArguments('storedAddresses(bytes32)', [index_0
+        ]);
+            const callDataWithDefaults = await BaseContract._applyDefaultsToTxDataAsync(
+            {
+            to: self.address,
+            ...callData,
+            data: encodedData,
+            },
+            self._web3Wrapper.getContractDefaults(),
+            );
+            const rawCallResult = await self._web3Wrapper.callAsync(callDataWithDefaults, defaultBlock);
+            BaseContract._throwIfRevertWithReasonCallResult(rawCallResult);
+            const abiEncoder = self._lookupAbiEncoder('storedAddresses(bytes32)');
+            // tslint:disable boolean-naming
+            const result = abiEncoder.strictDecodeReturnValue<[boolean, string]
+        >(rawCallResult);
+            // tslint:enable boolean-naming
+            return result;
+        },};
     public owner = {
         async callAsync(
         callData: Partial<CallData> = {},
             defaultBlock?: BlockParam,
         ): Promise<string
         > {
-            const self = this as any as SimpleDelegableContract;
+            const self = this as any as RegistryContract;
             const encodedData = self._strictEncodeArguments('owner()', []);
             const callDataWithDefaults = await BaseContract._applyDefaultsToTxDataAsync(
             {
@@ -59,7 +128,7 @@ export class SimpleDelegableContract extends BaseContract {
             txData: Partial<TxData> = {},
             estimateGasFactor?: number,
         ): Promise<Response> {
-            const self = this as any as SimpleDelegableContract;
+            const self = this as any as RegistryContract;
             const encodedData = self._strictEncodeArguments('transferOwnership(address)', [_newOwner
     ]);
             const contractDefaults = self._web3Wrapper.getContractDefaults();
@@ -74,7 +143,7 @@ export class SimpleDelegableContract extends BaseContract {
                     from: defaultFromAddress,
                     ...contractDefaults
                 },
-                self.transferOwnership.estimateGasAsync.bind<SimpleDelegableContract, any, Promise<number>>(
+                self.transferOwnership.estimateGasAsync.bind<RegistryContract, any, Promise<number>>(
                     self,
                     _newOwner
     ,
@@ -91,7 +160,7 @@ export class SimpleDelegableContract extends BaseContract {
             factor?: number,
             txData: Partial<TxData> = {},
         ): Promise<number> {
-            const self = this as any as SimpleDelegableContract;
+            const self = this as any as RegistryContract;
             const encodedData = self._strictEncodeArguments('transferOwnership(address)',
             [_newOwner
     ]);
@@ -117,7 +186,7 @@ export class SimpleDelegableContract extends BaseContract {
         getABIEncodedTransactionData(
             _newOwner: string,
         ): string {
-            const self = this as any as SimpleDelegableContract;
+            const self = this as any as RegistryContract;
             const abiEncodedTransactionData = self._strictEncodeArguments('transferOwnership(address)',
             [_newOwner
     ]);
@@ -129,7 +198,7 @@ export class SimpleDelegableContract extends BaseContract {
             defaultBlock?: BlockParam,
         ): Promise<void
         > {
-            const self = this as any as SimpleDelegableContract;
+            const self = this as any as RegistryContract;
             const encodedData = self._strictEncodeArguments('transferOwnership(address)', [_newOwner
         ]);
             const callDataWithDefaults = await BaseContract._applyDefaultsToTxDataAsync(
@@ -149,14 +218,70 @@ export class SimpleDelegableContract extends BaseContract {
             // tslint:enable boolean-naming
             return result;
         },};
-    public addDelegate = {
+    public getEntry = {
+        async callAsync(
+            _index: BigNumber,
+        callData: Partial<CallData> = {},
+            defaultBlock?: BlockParam,
+        ): Promise<[string, string]
+        > {
+            const self = this as any as RegistryContract;
+            const encodedData = self._strictEncodeArguments('getEntry(uint256)', [_index
+        ]);
+            const callDataWithDefaults = await BaseContract._applyDefaultsToTxDataAsync(
+            {
+            to: self.address,
+            ...callData,
+            data: encodedData,
+            },
+            self._web3Wrapper.getContractDefaults(),
+            );
+            const rawCallResult = await self._web3Wrapper.callAsync(callDataWithDefaults, defaultBlock);
+            BaseContract._throwIfRevertWithReasonCallResult(rawCallResult);
+            const abiEncoder = self._lookupAbiEncoder('getEntry(uint256)');
+            // tslint:disable boolean-naming
+            const result = abiEncoder.strictDecodeReturnValue<[string, string]
+        >(rawCallResult);
+            // tslint:enable boolean-naming
+            return result;
+        },};
+    public getAddress = {
+        async callAsync(
+            _nameKey: string,
+        callData: Partial<CallData> = {},
+            defaultBlock?: BlockParam,
+        ): Promise<string
+        > {
+            const self = this as any as RegistryContract;
+            const encodedData = self._strictEncodeArguments('getAddress(string)', [_nameKey
+        ]);
+            const callDataWithDefaults = await BaseContract._applyDefaultsToTxDataAsync(
+            {
+            to: self.address,
+            ...callData,
+            data: encodedData,
+            },
+            self._web3Wrapper.getContractDefaults(),
+            );
+            const rawCallResult = await self._web3Wrapper.callAsync(callDataWithDefaults, defaultBlock);
+            BaseContract._throwIfRevertWithReasonCallResult(rawCallResult);
+            const abiEncoder = self._lookupAbiEncoder('getAddress(string)');
+            // tslint:disable boolean-naming
+            const result = abiEncoder.strictDecodeReturnValue<string
+        >(rawCallResult);
+            // tslint:enable boolean-naming
+            return result;
+        },};
+    public newAddress = {
         async sendTransactionAsync(
-            _delegate: string,
+            _nameKey: string,
+            _newAddress: string,
             txData: Partial<TxData> = {},
             estimateGasFactor?: number,
         ): Promise<Response> {
-            const self = this as any as SimpleDelegableContract;
-            const encodedData = self._strictEncodeArguments('addDelegate(address)', [_delegate
+            const self = this as any as RegistryContract;
+            const encodedData = self._strictEncodeArguments('newAddress(string,address)', [_nameKey,
+    _newAddress
     ]);
             const contractDefaults = self._web3Wrapper.getContractDefaults();
             const defaultFromAddress = (await self._web3Wrapper.getAvailableAddressesAsync())[0];
@@ -170,9 +295,10 @@ export class SimpleDelegableContract extends BaseContract {
                     from: defaultFromAddress,
                     ...contractDefaults
                 },
-                self.addDelegate.estimateGasAsync.bind<SimpleDelegableContract, any, Promise<number>>(
+                self.newAddress.estimateGasAsync.bind<RegistryContract, any, Promise<number>>(
                     self,
-                    _delegate
+                    _nameKey,
+    _newAddress
     ,
                     estimateGasFactor,
                 ),
@@ -183,13 +309,15 @@ export class SimpleDelegableContract extends BaseContract {
             return new Response(txHash, receipt);
         },
         async estimateGasAsync(
-            _delegate: string,
+            _nameKey: string,
+            _newAddress: string,
             factor?: number,
             txData: Partial<TxData> = {},
         ): Promise<number> {
-            const self = this as any as SimpleDelegableContract;
-            const encodedData = self._strictEncodeArguments('addDelegate(address)',
-            [_delegate
+            const self = this as any as RegistryContract;
+            const encodedData = self._strictEncodeArguments('newAddress(string,address)',
+            [_nameKey,
+    _newAddress
     ]);
             const contractDefaults = self._web3Wrapper.getContractDefaults();
             const defaultFromAddress = (await self._web3Wrapper.getAvailableAddressesAsync())[0];
@@ -211,22 +339,26 @@ export class SimpleDelegableContract extends BaseContract {
             return (_safetyGasEstimation > networkGasLimit) ? networkGasLimit : _safetyGasEstimation;
         },
         getABIEncodedTransactionData(
-            _delegate: string,
+            _nameKey: string,
+            _newAddress: string,
         ): string {
-            const self = this as any as SimpleDelegableContract;
-            const abiEncodedTransactionData = self._strictEncodeArguments('addDelegate(address)',
-            [_delegate
+            const self = this as any as RegistryContract;
+            const abiEncodedTransactionData = self._strictEncodeArguments('newAddress(string,address)',
+            [_nameKey,
+    _newAddress
     ]);
             return abiEncodedTransactionData;
         },
         async callAsync(
-            _delegate: string,
+            _nameKey: string,
+            _newAddress: string,
         callData: Partial<CallData> = {},
             defaultBlock?: BlockParam,
-        ): Promise<boolean
+        ): Promise<void
         > {
-            const self = this as any as SimpleDelegableContract;
-            const encodedData = self._strictEncodeArguments('addDelegate(address)', [_delegate
+            const self = this as any as RegistryContract;
+            const encodedData = self._strictEncodeArguments('newAddress(string,address)', [_nameKey,
+        _newAddress
         ]);
             const callDataWithDefaults = await BaseContract._applyDefaultsToTxDataAsync(
             {
@@ -238,21 +370,23 @@ export class SimpleDelegableContract extends BaseContract {
             );
             const rawCallResult = await self._web3Wrapper.callAsync(callDataWithDefaults, defaultBlock);
             BaseContract._throwIfRevertWithReasonCallResult(rawCallResult);
-            const abiEncoder = self._lookupAbiEncoder('addDelegate(address)');
+            const abiEncoder = self._lookupAbiEncoder('newAddress(string,address)');
             // tslint:disable boolean-naming
-            const result = abiEncoder.strictDecodeReturnValue<boolean
+            const result = abiEncoder.strictDecodeReturnValue<void
         >(rawCallResult);
             // tslint:enable boolean-naming
             return result;
         },};
-    public removeDelegate = {
+    public changeAddress = {
         async sendTransactionAsync(
-            _delegate: string,
+            _nameKey: string,
+            _newAddress: string,
             txData: Partial<TxData> = {},
             estimateGasFactor?: number,
         ): Promise<Response> {
-            const self = this as any as SimpleDelegableContract;
-            const encodedData = self._strictEncodeArguments('removeDelegate(address)', [_delegate
+            const self = this as any as RegistryContract;
+            const encodedData = self._strictEncodeArguments('changeAddress(string,address)', [_nameKey,
+    _newAddress
     ]);
             const contractDefaults = self._web3Wrapper.getContractDefaults();
             const defaultFromAddress = (await self._web3Wrapper.getAvailableAddressesAsync())[0];
@@ -266,9 +400,10 @@ export class SimpleDelegableContract extends BaseContract {
                     from: defaultFromAddress,
                     ...contractDefaults
                 },
-                self.removeDelegate.estimateGasAsync.bind<SimpleDelegableContract, any, Promise<number>>(
+                self.changeAddress.estimateGasAsync.bind<RegistryContract, any, Promise<number>>(
                     self,
-                    _delegate
+                    _nameKey,
+    _newAddress
     ,
                     estimateGasFactor,
                 ),
@@ -279,13 +414,15 @@ export class SimpleDelegableContract extends BaseContract {
             return new Response(txHash, receipt);
         },
         async estimateGasAsync(
-            _delegate: string,
+            _nameKey: string,
+            _newAddress: string,
             factor?: number,
             txData: Partial<TxData> = {},
         ): Promise<number> {
-            const self = this as any as SimpleDelegableContract;
-            const encodedData = self._strictEncodeArguments('removeDelegate(address)',
-            [_delegate
+            const self = this as any as RegistryContract;
+            const encodedData = self._strictEncodeArguments('changeAddress(string,address)',
+            [_nameKey,
+    _newAddress
     ]);
             const contractDefaults = self._web3Wrapper.getContractDefaults();
             const defaultFromAddress = (await self._web3Wrapper.getAvailableAddressesAsync())[0];
@@ -307,22 +444,26 @@ export class SimpleDelegableContract extends BaseContract {
             return (_safetyGasEstimation > networkGasLimit) ? networkGasLimit : _safetyGasEstimation;
         },
         getABIEncodedTransactionData(
-            _delegate: string,
+            _nameKey: string,
+            _newAddress: string,
         ): string {
-            const self = this as any as SimpleDelegableContract;
-            const abiEncodedTransactionData = self._strictEncodeArguments('removeDelegate(address)',
-            [_delegate
+            const self = this as any as RegistryContract;
+            const abiEncodedTransactionData = self._strictEncodeArguments('changeAddress(string,address)',
+            [_nameKey,
+    _newAddress
     ]);
             return abiEncodedTransactionData;
         },
         async callAsync(
-            _delegate: string,
+            _nameKey: string,
+            _newAddress: string,
         callData: Partial<CallData> = {},
             defaultBlock?: BlockParam,
-        ): Promise<boolean
+        ): Promise<void
         > {
-            const self = this as any as SimpleDelegableContract;
-            const encodedData = self._strictEncodeArguments('removeDelegate(address)', [_delegate
+            const self = this as any as RegistryContract;
+            const encodedData = self._strictEncodeArguments('changeAddress(string,address)', [_nameKey,
+        _newAddress
         ]);
             const callDataWithDefaults = await BaseContract._applyDefaultsToTxDataAsync(
             {
@@ -334,36 +475,9 @@ export class SimpleDelegableContract extends BaseContract {
             );
             const rawCallResult = await self._web3Wrapper.callAsync(callDataWithDefaults, defaultBlock);
             BaseContract._throwIfRevertWithReasonCallResult(rawCallResult);
-            const abiEncoder = self._lookupAbiEncoder('removeDelegate(address)');
+            const abiEncoder = self._lookupAbiEncoder('changeAddress(string,address)');
             // tslint:disable boolean-naming
-            const result = abiEncoder.strictDecodeReturnValue<boolean
-        >(rawCallResult);
-            // tslint:enable boolean-naming
-            return result;
-        },};
-    public isDelegate = {
-        async callAsync(
-            _delegate: string,
-        callData: Partial<CallData> = {},
-            defaultBlock?: BlockParam,
-        ): Promise<boolean
-        > {
-            const self = this as any as SimpleDelegableContract;
-            const encodedData = self._strictEncodeArguments('isDelegate(address)', [_delegate
-        ]);
-            const callDataWithDefaults = await BaseContract._applyDefaultsToTxDataAsync(
-            {
-            to: self.address,
-            ...callData,
-            data: encodedData,
-            },
-            self._web3Wrapper.getContractDefaults(),
-            );
-            const rawCallResult = await self._web3Wrapper.callAsync(callDataWithDefaults, defaultBlock);
-            BaseContract._throwIfRevertWithReasonCallResult(rawCallResult);
-            const abiEncoder = self._lookupAbiEncoder('isDelegate(address)');
-            // tslint:disable boolean-naming
-            const result = abiEncoder.strictDecodeReturnValue<boolean
+            const result = abiEncoder.strictDecodeReturnValue<void
         >(rawCallResult);
             // tslint:enable boolean-naming
             return result;
@@ -373,7 +487,7 @@ export class SimpleDelegableContract extends BaseContract {
         abi: ContractAbi,
         supportedProvider: SupportedProvider,
         txDefaults: Partial<TxData>,
-    ): Promise<SimpleDelegableContract> {
+    ): Promise<RegistryContract> {
         const provider = providerUtils.standardizeOrThrow(supportedProvider);
         const constructorAbi = BaseContract._lookupConstructorAbi(abi);
         [] = BaseContract._formatABIDataItemList(
@@ -393,13 +507,13 @@ export class SimpleDelegableContract extends BaseContract {
         const txHash = await web3Wrapper.sendTransactionAsync(txDataWithDefaults);
         logUtils.log(`transactionHash: ${txHash}`);
         const txReceipt = await web3Wrapper.awaitTransactionSuccessAsync(txHash);
-        logUtils.log(`SimpleDelegable successfully deployed at ${txReceipt.contractAddress}`);
-        const contractInstance = new SimpleDelegableContract(abi, txReceipt.contractAddress as string, provider, txDefaults);
+        logUtils.log(`Registry successfully deployed at ${txReceipt.contractAddress}`);
+        const contractInstance = new RegistryContract(abi, txReceipt.contractAddress as string, provider, txDefaults);
         contractInstance.constructorArgs = [];
         return contractInstance;
     }
     constructor(abi: ContractAbi, address: string, supportedProvider: SupportedProvider, txDefaults?: Partial<TxData>, defaultEstimateGasFactor?: number) {
-        super('SimpleDelegable', abi, address, supportedProvider, txDefaults);
+        super('Registry', abi, address, supportedProvider, txDefaults);
         this._defaultEstimateGasFactor = defaultEstimateGasFactor === undefined ? 1.1 : defaultEstimateGasFactor;
         this._web3Wrapper.abiDecoder.addABI(abi);
         classUtils.bindAll(this, ['_abiEncoderByFunctionSignature', 'address', 'abi', '_web3Wrapper', '_defaultEstimateGasFactor']);

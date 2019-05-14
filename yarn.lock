@@ -20,33 +20,33 @@
     to-snake-case "^1.0.0"
     yargs "^10.0.3"
 
-"@0x/assert@^2.0.9":
-  version "2.0.9"
-  resolved "https://registry.yarnpkg.com/@0x/assert/-/assert-2.0.9.tgz#a289e61b8ff6e6cc38e504cfcdd154f202922b10"
-  integrity sha512-OzySGXe3/T5IG/mkuS3cwMiJToYo5VuU15J+JpWUXo9ELm2PJTnCzqS9++XZYTjqbK8ciuNz25kRj7TdN8KkcQ==
+"@0x/assert@^2.0.10":
+  version "2.0.10"
+  resolved "https://registry.yarnpkg.com/@0x/assert/-/assert-2.0.10.tgz#e1cfc7142b5dd7ee6510a676703935cf8ffd432e"
+  integrity sha512-tM3j5aZnJGTMr+7OAF61gmflrgEpUkp1LHNsnIx5VnVG+X7JzwV87O44PU9bALVQI1ufYvAUwhIkmK8jbR5Agw==
   dependencies:
-    "@0x/json-schemas" "^3.0.9"
+    "@0x/json-schemas" "^3.0.10"
     "@0x/typescript-typings" "^4.2.2"
-    "@0x/utils" "^4.3.1"
+    "@0x/utils" "^4.3.3"
     lodash "^4.17.11"
     valid-url "^1.0.9"
 
 "@0x/base-contract@^5.0.5":
-  version "5.0.5"
-  resolved "https://registry.yarnpkg.com/@0x/base-contract/-/base-contract-5.0.5.tgz#b3476a24e827d2d868e3adec7ea420dc0764861a"
-  integrity sha512-5OglshmOPA8cMtssT3wkb2Zq6HVufQutUyc0oUvC9KlGrAzWHUnhizNRXQXXeQRFYfFPrL0sL/gsqJuNBw57KQ==
+  version "5.1.0"
+  resolved "https://registry.yarnpkg.com/@0x/base-contract/-/base-contract-5.1.0.tgz#a1c83fcaf56c0e3ea8a8c5793ad0332cd6099cbf"
+  integrity sha512-0LI967ynPr8CuPJkpxZ0YUQX1ta63pVw8waTy2Yd3+UOdGS8dVDd9V/hvWPZpnviTO3zHxheFCPOnipgmht4Yw==
   dependencies:
     "@0x/typescript-typings" "^4.2.2"
-    "@0x/utils" "^4.3.1"
-    "@0x/web3-wrapper" "^6.0.5"
+    "@0x/utils" "^4.3.3"
+    "@0x/web3-wrapper" "^6.0.6"
     ethereum-types "^2.1.2"
     ethers "~4.0.4"
     lodash "^4.17.11"
 
-"@0x/json-schemas@^3.0.9":
-  version "3.0.9"
-  resolved "https://registry.yarnpkg.com/@0x/json-schemas/-/json-schemas-3.0.9.tgz#afb252a635a15b30cf913f3c44039b3a1c5ae8ab"
-  integrity sha512-wzaD1qlZTuUMmHnGl1MkR04fJaODI+NKF46sISRzOEIUtpYFaAA2I82Ijttjpr0sVe/7X9QoBZ1LuNJfRMQLxA==
+"@0x/json-schemas@^3.0.10":
+  version "3.0.10"
+  resolved "https://registry.yarnpkg.com/@0x/json-schemas/-/json-schemas-3.0.10.tgz#e15ea419ffb5af81f7eff7f6b3ac7602ca0b6957"
+  integrity sha512-RHYIaxf8C7GO/6VViD8zzRfs1B/i7P5vpCgPk8VR+aVDJXtceF9Nn72KiHeiHU9REUxMWgI3fzhYqTp5/CSbjA==
   dependencies:
     "@0x/typescript-typings" "^4.2.2"
     "@types/node" "*"
@@ -73,10 +73,10 @@
     ethereum-types "^2.1.2"
     popper.js "1.14.3"
 
-"@0x/utils@^4.3.1":
-  version "4.3.1"
-  resolved "https://registry.yarnpkg.com/@0x/utils/-/utils-4.3.1.tgz#4c371f3710186f4bc95fd2c9b455b8b2e3f0b5ce"
-  integrity sha512-uuhPSISoLW/IH+CRI85Vevj0Ye4x2+oI+j0Hfq4ZGVMfboTlVtEJ0kSptvVqocBFOKgG4k96FTr6xO56RDn6zg==
+"@0x/utils@^4.3.1", "@0x/utils@^4.3.3":
+  version "4.3.3"
+  resolved "https://registry.yarnpkg.com/@0x/utils/-/utils-4.3.3.tgz#56ab7b42a2a938057bf191e83054aa75a25a18f5"
+  integrity sha512-gAFKM8kV5I4A6mpn4+nl9pkstyDiFfQBGz4JBI6ES7s/HRetenVurFN8v1EpEF4N/SOtTzqhGerDUVVtrM3YSQ==
   dependencies:
     "@0x/types" "^2.2.2"
     "@0x/typescript-typings" "^4.2.2"
@@ -92,24 +92,24 @@
     js-sha3 "^0.7.0"
     lodash "^4.17.11"
 
-"@0x/web3-wrapper@^6.0.5":
-  version "6.0.5"
-  resolved "https://registry.yarnpkg.com/@0x/web3-wrapper/-/web3-wrapper-6.0.5.tgz#48523da4fb22d3c1561c98886a31c5f71d335952"
-  integrity sha512-YHe2kvkJR/ryULYDgMD6VBNwkf/X78wnG/UYMHyhs/J+jEipyp89tlN4o0+OB3Az0DKL3+4I8emSybBalG5C0Q==
+"@0x/web3-wrapper@^6.0.5", "@0x/web3-wrapper@^6.0.6":
+  version "6.0.6"
+  resolved "https://registry.yarnpkg.com/@0x/web3-wrapper/-/web3-wrapper-6.0.6.tgz#bf2b07ba9f309e4c7a25dd1b25b2e9de67d0afc9"
+  integrity sha512-cmDHgYnPGNs6ItMw5h+hLe3Cvqaj6V1RY14ZMCc87L7PrwUFQLnrmSfKcsjaqsNDEmbjLf2dNL25DVu6FN/uyw==
   dependencies:
-    "@0x/assert" "^2.0.9"
-    "@0x/json-schemas" "^3.0.9"
+    "@0x/assert" "^2.0.10"
+    "@0x/json-schemas" "^3.0.10"
     "@0x/typescript-typings" "^4.2.2"
-    "@0x/utils" "^4.3.1"
+    "@0x/utils" "^4.3.3"
     ethereum-types "^2.1.2"
     ethereumjs-util "^5.1.1"
     ethers "~4.0.4"
     lodash "^4.17.11"
 
-"@jpgonzalezra/diaspore-contract-artifacts@1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@jpgonzalezra/diaspore-contract-artifacts/-/diaspore-contract-artifacts-1.0.0.tgz#26754e8209c358a08d81640c931606ca819ad492"
-  integrity sha512-eIzAcj1jfEKYn9kiZL8fxYvs2Eae/YIJnHDDwRkyjxK5DA5LtD7i00ECQIb/DXrz12vazjInJ79G6+50tpVz8w==
+"@jpgonzalezra/diaspore-contract-artifacts@1.0.7":
+  version "1.0.7"
+  resolved "https://registry.yarnpkg.com/@jpgonzalezra/diaspore-contract-artifacts/-/diaspore-contract-artifacts-1.0.7.tgz#528e6bbbd9ec2a13c644467c5916c6bf6a3b64d3"
+  integrity sha512-ZanfTS8xQ/TDuYBBre/G3wcpCoz4hOUZ3+yeG5hFfrQt+Y3EEAb622XrUCpe+8ibulPpWCMQOv0heFpMD+zPvw==
 
 "@types/bn.js@^4.11.0":
   version "4.11.5"
@@ -119,14 +119,14 @@
     "@types/node" "*"
 
 "@types/lodash@^4.14.119":
-  version "4.14.124"
-  resolved "https://registry.yarnpkg.com/@types/lodash/-/lodash-4.14.124.tgz#16fb067a8fc4be42f044c505d8b5316c6f54de93"
-  integrity sha512-6bKEUVbHJ8z34jisA7lseJZD2g31SIvee3cGX2KEZCS4XXWNbjPZpmO1/2rGNR9BhGtaYr6iYXPl1EzRrDAFTA==
+  version "4.14.126"
+  resolved "https://registry.yarnpkg.com/@types/lodash/-/lodash-4.14.126.tgz#47cff3ea014aa083194f8ca3ec351136c3786613"
+  integrity sha512-HxQ+wQnBtnL0LszZrVdMqWIlzZNyKuMLUb6swQ3mo6ysPqpAu7gfnapCQIi0B+Mrf0fNLZh8AWgJs2njejVasg==
 
 "@types/node@*":
-  version "12.0.0"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-12.0.0.tgz#d11813b9c0ff8aaca29f04cbc12817f4c7d656e5"
-  integrity sha512-Jrb/x3HT4PTJp6a4avhmJCDEVrPdqLfl3e8GGMbpkGGdwAV5UGlIs4vVEfsHHfylZVOKZWpOqmqFH8CbfOZ6kg==
+  version "12.0.1"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-12.0.1.tgz#3dde31f8da274dfeb90e96abf55038fef46285f0"
+  integrity sha512-7sy7DKVJrCTbaAERJZq/CU12bzdmpjRr321/Ne9QmzhB3iZ//L16Cizcni5hHNbANxDbxwMb9EFoWkM8KPkp0A==
 
 "@types/node@^10.12.18", "@types/node@^10.3.2":
   version "10.14.6"
@@ -953,9 +953,9 @@ nan@>=2.12.1, nan@^2.13.2, nan@^2.2.1:
   integrity sha512-TghvYc72wlMGMVMluVo9WRJc0mB8KxxF/gZ4YYFy7V2ZQX9l7rgbPg7vjS9mt6U5HXODVFVI2bOduCzwOMv/lw==
 
 neo-async@^2.6.0:
-  version "2.6.0"
-  resolved "https://registry.yarnpkg.com/neo-async/-/neo-async-2.6.0.tgz#b9d15e4d71c6762908654b5183ed38b753340835"
-  integrity sha512-MFh0d/Wa7vkKO3Y3LlacqAEeHK0mckVqzDieUKTT+KGxi+zIpeVsFxymkIiRpbpDziHc290Xr9A1O4Om7otoRA==
+  version "2.6.1"
+  resolved "https://registry.yarnpkg.com/neo-async/-/neo-async-2.6.1.tgz#ac27ada66167fa8849a6addd837f6b189ad2081c"
+  integrity sha512-iyam8fBuCUpWeKPGpaNMetEocMt364qkCsfL9JuhjXX6dRnguRVOfk2GZaDpPjcOKiiXCPINZC1GczQ7iTq3Zw==
 
 node-fetch@^1.0.1:
   version "1.7.3"
@@ -1114,10 +1114,6 @@ pseudomap@^1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/pseudomap/-/pseudomap-1.0.2.tgz#f052a28da70e618917ef0a8ac34c1ae5a68286b3"
   integrity sha1-8FKijacOYYkX7wqKw0wa5aaChrM=
-
-"rcn-diaspore-contract-artifacts@git://github.com/ripio/rcn-diaspore-contract-artifacts.git#dev-1.0.0":
-  version "1.0.0"
-  resolved "git://github.com/ripio/rcn-diaspore-contract-artifacts.git#4f464095a105d0164c9628ba97279d07a149dd02"
 
 read-pkg-up@^1.0.1:
   version "1.0.1"
@@ -1465,9 +1461,9 @@ uglify-es@^3.1.9:
     source-map "~0.6.1"
 
 uglify-js@^3.1.4, uglify-js@^3.1.9:
-  version "3.5.11"
-  resolved "https://registry.yarnpkg.com/uglify-js/-/uglify-js-3.5.11.tgz#833442c0aa29b3a7d34344c7c63adaa3f3504f6a"
-  integrity sha512-izPJg8RsSyqxbdnqX36ExpbH3K7tDBsAU/VfNv89VkMFy3z39zFjunQGsSHOlGlyIfGLGprGeosgQno3bo2/Kg==
+  version "3.5.12"
+  resolved "https://registry.yarnpkg.com/uglify-js/-/uglify-js-3.5.12.tgz#6b759cabc08c3e91fe82323d6387019f0c5864cd"
+  integrity sha512-KeQesOpPiZNgVwJj8Ge3P4JYbQHUdZzpx6Fahy6eKAYRSV4zhVmLXoC+JtOeYxcHCHTve8RG1ZGdTvpeOUM26Q==
   dependencies:
     commander "~2.20.0"
     source-map "~0.6.1"
