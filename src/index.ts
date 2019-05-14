@@ -13,13 +13,10 @@ export * from './generated-wrappers/loan_approver';
 export * from './generated-wrappers/loan_manager';
 export * from './generated-wrappers/model_descriptor';
 export * from './generated-wrappers/model';
-export * from './generated-wrappers/nano_loan_model';
 export * from './generated-wrappers/oracle_adapter';
 export * from './generated-wrappers/oracle';
 export * from './generated-wrappers/ownable';
 export * from './generated-wrappers/rate_oracle';
-export * from './generated-wrappers/simple_delegable';
-export * from './generated-wrappers/u_r_i_provider';
 
 
 
