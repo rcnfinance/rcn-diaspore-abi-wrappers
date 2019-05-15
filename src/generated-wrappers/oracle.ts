@@ -11,21 +11,14 @@ import * as ethers from 'ethers';
 // tslint:enable:no-unused-variable
 
 export type OracleEventArgs =
-    | OracleNewSymbolEventArgs
-    | OracleOwnershipTransferredEventArgs;
+    | OracleNewSymbolEventArgs;
 
 export enum OracleEvents {
     NewSymbol = 'NewSymbol',
-    OwnershipTransferred = 'OwnershipTransferred',
 }
 
 export interface OracleNewSymbolEventArgs extends DecodedLogArgs {
     _currency: string;
-}
-
-export interface OracleOwnershipTransferredEventArgs extends DecodedLogArgs {
-    _previousOwner: string;
-    _newOwner: string;
 }
 
 
@@ -86,14 +79,14 @@ export class OracleContract extends BaseContract {
             // tslint:enable boolean-naming
             return result;
         },};
-    public transferOwnership = {
+    public transferTo = {
         async sendTransactionAsync(
-            _newOwner: string,
+            _to: string,
             txData: Partial<TxData> = {},
             estimateGasFactor?: number,
         ): Promise<Response> {
             const self = this as any as OracleContract;
-            const encodedData = self._strictEncodeArguments('transferOwnership(address)', [_newOwner
+            const encodedData = self._strictEncodeArguments('transferTo(address)', [_to
     ]);
             const contractDefaults = self._web3Wrapper.getContractDefaults();
             const defaultFromAddress = (await self._web3Wrapper.getAvailableAddressesAsync())[0];
@@ -107,9 +100,9 @@ export class OracleContract extends BaseContract {
                     from: defaultFromAddress,
                     ...contractDefaults
                 },
-                self.transferOwnership.estimateGasAsync.bind<OracleContract, any, Promise<number>>(
+                self.transferTo.estimateGasAsync.bind<OracleContract, any, Promise<number>>(
                     self,
-                    _newOwner
+                    _to
     ,
                     estimateGasFactor,
                 ),
@@ -120,13 +113,13 @@ export class OracleContract extends BaseContract {
             return new Response(txHash, receipt);
         },
         async estimateGasAsync(
-            _newOwner: string,
+            _to: string,
             factor?: number,
             txData: Partial<TxData> = {},
         ): Promise<number> {
             const self = this as any as OracleContract;
-            const encodedData = self._strictEncodeArguments('transferOwnership(address)',
-            [_newOwner
+            const encodedData = self._strictEncodeArguments('transferTo(address)',
+            [_to
     ]);
             const contractDefaults = self._web3Wrapper.getContractDefaults();
             const defaultFromAddress = (await self._web3Wrapper.getAvailableAddressesAsync())[0];
@@ -148,22 +141,22 @@ export class OracleContract extends BaseContract {
             return (_safetyGasEstimation > networkGasLimit) ? networkGasLimit : _safetyGasEstimation;
         },
         getABIEncodedTransactionData(
-            _newOwner: string,
+            _to: string,
         ): string {
             const self = this as any as OracleContract;
-            const abiEncodedTransactionData = self._strictEncodeArguments('transferOwnership(address)',
-            [_newOwner
+            const abiEncodedTransactionData = self._strictEncodeArguments('transferTo(address)',
+            [_to
     ]);
             return abiEncodedTransactionData;
         },
         async callAsync(
-            _newOwner: string,
+            _to: string,
         callData: Partial<CallData> = {},
             defaultBlock?: BlockParam,
-        ): Promise<void
+        ): Promise<boolean
         > {
             const self = this as any as OracleContract;
-            const encodedData = self._strictEncodeArguments('transferOwnership(address)', [_newOwner
+            const encodedData = self._strictEncodeArguments('transferTo(address)', [_to
         ]);
             const callDataWithDefaults = await BaseContract._applyDefaultsToTxDataAsync(
             {
@@ -175,9 +168,9 @@ export class OracleContract extends BaseContract {
             );
             const rawCallResult = await self._web3Wrapper.callAsync(callDataWithDefaults, defaultBlock);
             BaseContract._throwIfRevertWithReasonCallResult(rawCallResult);
-            const abiEncoder = self._lookupAbiEncoder('transferOwnership(address)');
+            const abiEncoder = self._lookupAbiEncoder('transferTo(address)');
             // tslint:disable boolean-naming
-            const result = abiEncoder.strictDecodeReturnValue<void
+            const result = abiEncoder.strictDecodeReturnValue<boolean
         >(rawCallResult);
             // tslint:enable boolean-naming
             return result;
