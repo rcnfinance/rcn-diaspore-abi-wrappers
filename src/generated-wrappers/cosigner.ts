@@ -18,87 +18,90 @@ export class CosignerContract extends BaseContract {
     private _defaultEstimateGasFactor: number;
     public VERSION = {
         async callAsync(
-        callData: Partial<CallData> = {},
+            callData: Partial<CallData> = {},
             defaultBlock?: BlockParam,
         ): Promise<BigNumber
         > {
             const self = this as any as CosignerContract;
             const encodedData = self._strictEncodeArguments('VERSION()', []);
             const callDataWithDefaults = await BaseContract._applyDefaultsToTxDataAsync(
-            {
-            to: self.address,
-            ...callData,
-            data: encodedData,
-            },
-            self._web3Wrapper.getContractDefaults(),
+                {
+                    to: self.address,
+                    ...callData,
+                    data: encodedData,
+                },
+                self._web3Wrapper.getContractDefaults(),
             );
             const rawCallResult = await self._web3Wrapper.callAsync(callDataWithDefaults, defaultBlock);
             BaseContract._throwIfRevertWithReasonCallResult(rawCallResult);
             const abiEncoder = self._lookupAbiEncoder('VERSION()');
             // tslint:disable boolean-naming
             const result = abiEncoder.strictDecodeReturnValue<BigNumber
-        >(rawCallResult);
+                >(rawCallResult);
             // tslint:enable boolean-naming
             return result;
-        },};
+        },
+    };
     public url = {
         async callAsync(
-        callData: Partial<CallData> = {},
+            callData: Partial<CallData> = {},
             defaultBlock?: BlockParam,
         ): Promise<string
         > {
             const self = this as any as CosignerContract;
             const encodedData = self._strictEncodeArguments('url()', []);
             const callDataWithDefaults = await BaseContract._applyDefaultsToTxDataAsync(
-            {
-            to: self.address,
-            ...callData,
-            data: encodedData,
-            },
-            self._web3Wrapper.getContractDefaults(),
+                {
+                    to: self.address,
+                    ...callData,
+                    data: encodedData,
+                },
+                self._web3Wrapper.getContractDefaults(),
             );
             const rawCallResult = await self._web3Wrapper.callAsync(callDataWithDefaults, defaultBlock);
             BaseContract._throwIfRevertWithReasonCallResult(rawCallResult);
             const abiEncoder = self._lookupAbiEncoder('url()');
             // tslint:disable boolean-naming
             const result = abiEncoder.strictDecodeReturnValue<string
-        >(rawCallResult);
+                >(rawCallResult);
             // tslint:enable boolean-naming
             return result;
-        },};
+        },
+    };
     public cost = {
         async callAsync(
             engine: string,
             index: BigNumber,
             data: string,
             oracleData: string,
-        callData: Partial<CallData> = {},
+            callData: Partial<CallData> = {},
             defaultBlock?: BlockParam,
         ): Promise<BigNumber
         > {
             const self = this as any as CosignerContract;
             const encodedData = self._strictEncodeArguments('cost(address,uint256,bytes,bytes)', [engine,
-        index,
-        data,
-        oracleData
-        ]);
+                index,
+                data,
+                oracleData
+            ]);
             const callDataWithDefaults = await BaseContract._applyDefaultsToTxDataAsync(
-            {
-            to: self.address,
-            ...callData,
-            data: encodedData,
-            },
-            self._web3Wrapper.getContractDefaults(),
+                {
+                    to: self.address,
+                    ...callData,
+                    data: encodedData,
+                },
+                self._web3Wrapper.getContractDefaults(),
             );
             const rawCallResult = await self._web3Wrapper.callAsync(callDataWithDefaults, defaultBlock);
             BaseContract._throwIfRevertWithReasonCallResult(rawCallResult);
             const abiEncoder = self._lookupAbiEncoder('cost(address,uint256,bytes,bytes)');
             // tslint:disable boolean-naming
             const result = abiEncoder.strictDecodeReturnValue<BigNumber
-        >(rawCallResult);
+                >(rawCallResult);
             // tslint:enable boolean-naming
             return result;
-        },};
+        },
+    };
     public requestCosign = {
         async sendTransactionAsync(
             engine: string,
@@ -110,10 +113,10 @@ export class CosignerContract extends BaseContract {
         ): Promise<Response> {
             const self = this as any as CosignerContract;
             const encodedData = self._strictEncodeArguments('requestCosign(address,uint256,bytes,bytes)', [engine,
-    index,
-    data,
-    oracleData
-    ]);
+                index,
+                data,
+                oracleData
+            ]);
             const contractDefaults = self._web3Wrapper.getContractDefaults();
             const defaultFromAddress = (await self._web3Wrapper.getAvailableAddressesAsync())[0];
             const txDataWithDefaults = await BaseContract._applyDefaultsToTxDataAsync(
@@ -129,16 +132,16 @@ export class CosignerContract extends BaseContract {
                 self.requestCosign.estimateGasAsync.bind<CosignerContract, any, Promise<number>>(
                     self,
                     engine,
-    index,
-    data,
-    oracleData
-    ,
+                    index,
+                    data,
+                    oracleData
+                    ,
                     estimateGasFactor,
                 ),
             );
             const txHash = await self._web3Wrapper.sendTransactionAsync(txDataWithDefaults);
             const receipt = self._web3Wrapper.awaitTransactionSuccessAsync(txHash);
-    
+
             return new Response(txHash, receipt);
         },
         async estimateGasAsync(
@@ -151,11 +154,11 @@ export class CosignerContract extends BaseContract {
         ): Promise<number> {
             const self = this as any as CosignerContract;
             const encodedData = self._strictEncodeArguments('requestCosign(address,uint256,bytes,bytes)',
-            [engine,
-    index,
-    data,
-    oracleData
-    ]);
+                [engine,
+                    index,
+                    data,
+                    oracleData
+                ]);
             const contractDefaults = self._web3Wrapper.getContractDefaults();
             const defaultFromAddress = (await self._web3Wrapper.getAvailableAddressesAsync())[0];
             const txDataWithDefaults = await BaseContract._applyDefaultsToTxDataAsync(
@@ -183,11 +186,11 @@ export class CosignerContract extends BaseContract {
         ): string {
             const self = this as any as CosignerContract;
             const abiEncodedTransactionData = self._strictEncodeArguments('requestCosign(address,uint256,bytes,bytes)',
-            [engine,
-    index,
-    data,
-    oracleData
-    ]);
+                [engine,
+                    index,
+                    data,
+                    oracleData
+                ]);
             return abiEncodedTransactionData;
         },
         async callAsync(
@@ -195,33 +198,34 @@ export class CosignerContract extends BaseContract {
             index: BigNumber,
             data: string,
             oracleData: string,
-        callData: Partial<CallData> = {},
+            callData: Partial<CallData> = {},
             defaultBlock?: BlockParam,
         ): Promise<boolean
         > {
             const self = this as any as CosignerContract;
             const encodedData = self._strictEncodeArguments('requestCosign(address,uint256,bytes,bytes)', [engine,
-        index,
-        data,
-        oracleData
-        ]);
+                index,
+                data,
+                oracleData
+            ]);
             const callDataWithDefaults = await BaseContract._applyDefaultsToTxDataAsync(
-            {
-            to: self.address,
-            ...callData,
-            data: encodedData,
-            },
-            self._web3Wrapper.getContractDefaults(),
+                {
+                    to: self.address,
+                    ...callData,
+                    data: encodedData,
+                },
+                self._web3Wrapper.getContractDefaults(),
             );
             const rawCallResult = await self._web3Wrapper.callAsync(callDataWithDefaults, defaultBlock);
             BaseContract._throwIfRevertWithReasonCallResult(rawCallResult);
             const abiEncoder = self._lookupAbiEncoder('requestCosign(address,uint256,bytes,bytes)');
             // tslint:disable boolean-naming
             const result = abiEncoder.strictDecodeReturnValue<boolean
-        >(rawCallResult);
+                >(rawCallResult);
             // tslint:enable boolean-naming
             return result;
-        },};
+        },
+    };
     public claim = {
         async sendTransactionAsync(
             engine: string,
@@ -232,9 +236,9 @@ export class CosignerContract extends BaseContract {
         ): Promise<Response> {
             const self = this as any as CosignerContract;
             const encodedData = self._strictEncodeArguments('claim(address,uint256,bytes)', [engine,
-    index,
-    oracleData
-    ]);
+                index,
+                oracleData
+            ]);
             const contractDefaults = self._web3Wrapper.getContractDefaults();
             const defaultFromAddress = (await self._web3Wrapper.getAvailableAddressesAsync())[0];
             const txDataWithDefaults = await BaseContract._applyDefaultsToTxDataAsync(
@@ -250,15 +254,15 @@ export class CosignerContract extends BaseContract {
                 self.claim.estimateGasAsync.bind<CosignerContract, any, Promise<number>>(
                     self,
                     engine,
-    index,
-    oracleData
-    ,
+                    index,
+                    oracleData
+                    ,
                     estimateGasFactor,
                 ),
             );
             const txHash = await self._web3Wrapper.sendTransactionAsync(txDataWithDefaults);
             const receipt = self._web3Wrapper.awaitTransactionSuccessAsync(txHash);
-    
+
             return new Response(txHash, receipt);
         },
         async estimateGasAsync(
@@ -270,10 +274,10 @@ export class CosignerContract extends BaseContract {
         ): Promise<number> {
             const self = this as any as CosignerContract;
             const encodedData = self._strictEncodeArguments('claim(address,uint256,bytes)',
-            [engine,
-    index,
-    oracleData
-    ]);
+                [engine,
+                    index,
+                    oracleData
+                ]);
             const contractDefaults = self._web3Wrapper.getContractDefaults();
             const defaultFromAddress = (await self._web3Wrapper.getAvailableAddressesAsync())[0];
             const txDataWithDefaults = await BaseContract._applyDefaultsToTxDataAsync(
@@ -300,42 +304,43 @@ export class CosignerContract extends BaseContract {
         ): string {
             const self = this as any as CosignerContract;
             const abiEncodedTransactionData = self._strictEncodeArguments('claim(address,uint256,bytes)',
-            [engine,
-    index,
-    oracleData
-    ]);
+                [engine,
+                    index,
+                    oracleData
+                ]);
             return abiEncodedTransactionData;
         },
         async callAsync(
             engine: string,
             index: BigNumber,
             oracleData: string,
-        callData: Partial<CallData> = {},
+            callData: Partial<CallData> = {},
             defaultBlock?: BlockParam,
         ): Promise<boolean
         > {
             const self = this as any as CosignerContract;
             const encodedData = self._strictEncodeArguments('claim(address,uint256,bytes)', [engine,
-        index,
-        oracleData
-        ]);
+                index,
+                oracleData
+            ]);
             const callDataWithDefaults = await BaseContract._applyDefaultsToTxDataAsync(
-            {
-            to: self.address,
-            ...callData,
-            data: encodedData,
-            },
-            self._web3Wrapper.getContractDefaults(),
+                {
+                    to: self.address,
+                    ...callData,
+                    data: encodedData,
+                },
+                self._web3Wrapper.getContractDefaults(),
             );
             const rawCallResult = await self._web3Wrapper.callAsync(callDataWithDefaults, defaultBlock);
             BaseContract._throwIfRevertWithReasonCallResult(rawCallResult);
             const abiEncoder = self._lookupAbiEncoder('claim(address,uint256,bytes)');
             // tslint:disable boolean-naming
             const result = abiEncoder.strictDecodeReturnValue<boolean
-        >(rawCallResult);
+                >(rawCallResult);
             // tslint:enable boolean-naming
             return result;
-        },};
+        },
+    };
     public static async deployAsync(
         bytecode: string,
         abi: ContractAbi,
@@ -354,7 +359,7 @@ export class CosignerContract extends BaseContract {
         const txData = deployInfo.encode(bytecode, []);
         const web3Wrapper = new Web3Wrapper(provider);
         const txDataWithDefaults = await BaseContract._applyDefaultsToTxDataAsync(
-            {data: txData},
+            { data: txData },
             txDefaults,
             web3Wrapper.estimateGasAsync.bind(web3Wrapper),
         );

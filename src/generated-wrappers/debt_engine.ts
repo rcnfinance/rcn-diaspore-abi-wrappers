@@ -153,82 +153,85 @@ export class DebtEngineContract extends BaseContract {
     public supportsInterface = {
         async callAsync(
             interfaceId: string,
-        callData: Partial<CallData> = {},
+            callData: Partial<CallData> = {},
             defaultBlock?: BlockParam,
         ): Promise<boolean
         > {
             const self = this as any as DebtEngineContract;
             const encodedData = self._strictEncodeArguments('supportsInterface(bytes4)', [interfaceId
-        ]);
+            ]);
             const callDataWithDefaults = await BaseContract._applyDefaultsToTxDataAsync(
-            {
-            to: self.address,
-            ...callData,
-            data: encodedData,
-            },
-            self._web3Wrapper.getContractDefaults(),
+                {
+                    to: self.address,
+                    ...callData,
+                    data: encodedData,
+                },
+                self._web3Wrapper.getContractDefaults(),
             );
             const rawCallResult = await self._web3Wrapper.callAsync(callDataWithDefaults, defaultBlock);
             BaseContract._throwIfRevertWithReasonCallResult(rawCallResult);
             const abiEncoder = self._lookupAbiEncoder('supportsInterface(bytes4)');
             // tslint:disable boolean-naming
             const result = abiEncoder.strictDecodeReturnValue<boolean
-        >(rawCallResult);
+                >(rawCallResult);
             // tslint:enable boolean-naming
             return result;
-        },};
+        },
+    };
     public name = {
         async callAsync(
-        callData: Partial<CallData> = {},
+            callData: Partial<CallData> = {},
             defaultBlock?: BlockParam,
         ): Promise<string
         > {
             const self = this as any as DebtEngineContract;
             const encodedData = self._strictEncodeArguments('name()', []);
             const callDataWithDefaults = await BaseContract._applyDefaultsToTxDataAsync(
-            {
-            to: self.address,
-            ...callData,
-            data: encodedData,
-            },
-            self._web3Wrapper.getContractDefaults(),
+                {
+                    to: self.address,
+                    ...callData,
+                    data: encodedData,
+                },
+                self._web3Wrapper.getContractDefaults(),
             );
             const rawCallResult = await self._web3Wrapper.callAsync(callDataWithDefaults, defaultBlock);
             BaseContract._throwIfRevertWithReasonCallResult(rawCallResult);
             const abiEncoder = self._lookupAbiEncoder('name()');
             // tslint:disable boolean-naming
             const result = abiEncoder.strictDecodeReturnValue<string
-        >(rawCallResult);
+                >(rawCallResult);
             // tslint:enable boolean-naming
             return result;
-        },};
+        },
+    };
     public getApproved = {
         async callAsync(
             _assetId: BigNumber,
-        callData: Partial<CallData> = {},
+            callData: Partial<CallData> = {},
             defaultBlock?: BlockParam,
         ): Promise<string
         > {
             const self = this as any as DebtEngineContract;
             const encodedData = self._strictEncodeArguments('getApproved(uint256)', [_assetId
-        ]);
+            ]);
             const callDataWithDefaults = await BaseContract._applyDefaultsToTxDataAsync(
-            {
-            to: self.address,
-            ...callData,
-            data: encodedData,
-            },
-            self._web3Wrapper.getContractDefaults(),
+                {
+                    to: self.address,
+                    ...callData,
+                    data: encodedData,
+                },
+                self._web3Wrapper.getContractDefaults(),
             );
             const rawCallResult = await self._web3Wrapper.callAsync(callDataWithDefaults, defaultBlock);
             BaseContract._throwIfRevertWithReasonCallResult(rawCallResult);
             const abiEncoder = self._lookupAbiEncoder('getApproved(uint256)');
             // tslint:disable boolean-naming
             const result = abiEncoder.strictDecodeReturnValue<string
-        >(rawCallResult);
+                >(rawCallResult);
             // tslint:enable boolean-naming
             return result;
-        },};
+        },
+    };
     public approve = {
         async sendTransactionAsync(
             _operator: string,
@@ -238,8 +241,8 @@ export class DebtEngineContract extends BaseContract {
         ): Promise<Response> {
             const self = this as any as DebtEngineContract;
             const encodedData = self._strictEncodeArguments('approve(address,uint256)', [_operator,
-    _assetId
-    ]);
+                _assetId
+            ]);
             const contractDefaults = self._web3Wrapper.getContractDefaults();
             const defaultFromAddress = (await self._web3Wrapper.getAvailableAddressesAsync())[0];
             const txDataWithDefaults = await BaseContract._applyDefaultsToTxDataAsync(
@@ -255,14 +258,14 @@ export class DebtEngineContract extends BaseContract {
                 self.approve.estimateGasAsync.bind<DebtEngineContract, any, Promise<number>>(
                     self,
                     _operator,
-    _assetId
-    ,
+                    _assetId
+                    ,
                     estimateGasFactor,
                 ),
             );
             const txHash = await self._web3Wrapper.sendTransactionAsync(txDataWithDefaults);
             const receipt = self._web3Wrapper.awaitTransactionSuccessAsync(txHash);
-    
+
             return new Response(txHash, receipt);
         },
         async estimateGasAsync(
@@ -273,9 +276,9 @@ export class DebtEngineContract extends BaseContract {
         ): Promise<number> {
             const self = this as any as DebtEngineContract;
             const encodedData = self._strictEncodeArguments('approve(address,uint256)',
-            [_operator,
-    _assetId
-    ]);
+                [_operator,
+                    _assetId
+                ]);
             const contractDefaults = self._web3Wrapper.getContractDefaults();
             const defaultFromAddress = (await self._web3Wrapper.getAvailableAddressesAsync())[0];
             const txDataWithDefaults = await BaseContract._applyDefaultsToTxDataAsync(
@@ -301,64 +304,66 @@ export class DebtEngineContract extends BaseContract {
         ): string {
             const self = this as any as DebtEngineContract;
             const abiEncodedTransactionData = self._strictEncodeArguments('approve(address,uint256)',
-            [_operator,
-    _assetId
-    ]);
+                [_operator,
+                    _assetId
+                ]);
             return abiEncodedTransactionData;
         },
         async callAsync(
             _operator: string,
             _assetId: BigNumber,
-        callData: Partial<CallData> = {},
+            callData: Partial<CallData> = {},
             defaultBlock?: BlockParam,
         ): Promise<void
         > {
             const self = this as any as DebtEngineContract;
             const encodedData = self._strictEncodeArguments('approve(address,uint256)', [_operator,
-        _assetId
-        ]);
+                _assetId
+            ]);
             const callDataWithDefaults = await BaseContract._applyDefaultsToTxDataAsync(
-            {
-            to: self.address,
-            ...callData,
-            data: encodedData,
-            },
-            self._web3Wrapper.getContractDefaults(),
+                {
+                    to: self.address,
+                    ...callData,
+                    data: encodedData,
+                },
+                self._web3Wrapper.getContractDefaults(),
             );
             const rawCallResult = await self._web3Wrapper.callAsync(callDataWithDefaults, defaultBlock);
             BaseContract._throwIfRevertWithReasonCallResult(rawCallResult);
             const abiEncoder = self._lookupAbiEncoder('approve(address,uint256)');
             // tslint:disable boolean-naming
             const result = abiEncoder.strictDecodeReturnValue<void
-        >(rawCallResult);
+                >(rawCallResult);
             // tslint:enable boolean-naming
             return result;
-        },};
+        },
+    };
     public totalSupply = {
         async callAsync(
-        callData: Partial<CallData> = {},
+            callData: Partial<CallData> = {},
             defaultBlock?: BlockParam,
         ): Promise<BigNumber
         > {
             const self = this as any as DebtEngineContract;
             const encodedData = self._strictEncodeArguments('totalSupply()', []);
             const callDataWithDefaults = await BaseContract._applyDefaultsToTxDataAsync(
-            {
-            to: self.address,
-            ...callData,
-            data: encodedData,
-            },
-            self._web3Wrapper.getContractDefaults(),
+                {
+                    to: self.address,
+                    ...callData,
+                    data: encodedData,
+                },
+                self._web3Wrapper.getContractDefaults(),
             );
             const rawCallResult = await self._web3Wrapper.callAsync(callDataWithDefaults, defaultBlock);
             BaseContract._throwIfRevertWithReasonCallResult(rawCallResult);
             const abiEncoder = self._lookupAbiEncoder('totalSupply()');
             // tslint:disable boolean-naming
             const result = abiEncoder.strictDecodeReturnValue<BigNumber
-        >(rawCallResult);
+                >(rawCallResult);
             // tslint:enable boolean-naming
             return result;
-        },};
+        },
+    };
     public transferFrom = {
         async sendTransactionAsync(
             _from: string,
@@ -369,9 +374,9 @@ export class DebtEngineContract extends BaseContract {
         ): Promise<Response> {
             const self = this as any as DebtEngineContract;
             const encodedData = self._strictEncodeArguments('transferFrom(address,address,uint256)', [_from,
-    _to,
-    _assetId
-    ]);
+                _to,
+                _assetId
+            ]);
             const contractDefaults = self._web3Wrapper.getContractDefaults();
             const defaultFromAddress = (await self._web3Wrapper.getAvailableAddressesAsync())[0];
             const txDataWithDefaults = await BaseContract._applyDefaultsToTxDataAsync(
@@ -387,15 +392,15 @@ export class DebtEngineContract extends BaseContract {
                 self.transferFrom.estimateGasAsync.bind<DebtEngineContract, any, Promise<number>>(
                     self,
                     _from,
-    _to,
-    _assetId
-    ,
+                    _to,
+                    _assetId
+                    ,
                     estimateGasFactor,
                 ),
             );
             const txHash = await self._web3Wrapper.sendTransactionAsync(txDataWithDefaults);
             const receipt = self._web3Wrapper.awaitTransactionSuccessAsync(txHash);
-    
+
             return new Response(txHash, receipt);
         },
         async estimateGasAsync(
@@ -407,10 +412,10 @@ export class DebtEngineContract extends BaseContract {
         ): Promise<number> {
             const self = this as any as DebtEngineContract;
             const encodedData = self._strictEncodeArguments('transferFrom(address,address,uint256)',
-            [_from,
-    _to,
-    _assetId
-    ]);
+                [_from,
+                    _to,
+                    _assetId
+                ]);
             const contractDefaults = self._web3Wrapper.getContractDefaults();
             const defaultFromAddress = (await self._web3Wrapper.getAvailableAddressesAsync())[0];
             const txDataWithDefaults = await BaseContract._applyDefaultsToTxDataAsync(
@@ -437,127 +442,131 @@ export class DebtEngineContract extends BaseContract {
         ): string {
             const self = this as any as DebtEngineContract;
             const abiEncodedTransactionData = self._strictEncodeArguments('transferFrom(address,address,uint256)',
-            [_from,
-    _to,
-    _assetId
-    ]);
+                [_from,
+                    _to,
+                    _assetId
+                ]);
             return abiEncodedTransactionData;
         },
         async callAsync(
             _from: string,
             _to: string,
             _assetId: BigNumber,
-        callData: Partial<CallData> = {},
+            callData: Partial<CallData> = {},
             defaultBlock?: BlockParam,
         ): Promise<void
         > {
             const self = this as any as DebtEngineContract;
             const encodedData = self._strictEncodeArguments('transferFrom(address,address,uint256)', [_from,
-        _to,
-        _assetId
-        ]);
+                _to,
+                _assetId
+            ]);
             const callDataWithDefaults = await BaseContract._applyDefaultsToTxDataAsync(
-            {
-            to: self.address,
-            ...callData,
-            data: encodedData,
-            },
-            self._web3Wrapper.getContractDefaults(),
+                {
+                    to: self.address,
+                    ...callData,
+                    data: encodedData,
+                },
+                self._web3Wrapper.getContractDefaults(),
             );
             const rawCallResult = await self._web3Wrapper.callAsync(callDataWithDefaults, defaultBlock);
             BaseContract._throwIfRevertWithReasonCallResult(rawCallResult);
             const abiEncoder = self._lookupAbiEncoder('transferFrom(address,address,uint256)');
             // tslint:disable boolean-naming
             const result = abiEncoder.strictDecodeReturnValue<void
-        >(rawCallResult);
+                >(rawCallResult);
             // tslint:enable boolean-naming
             return result;
-        },};
+        },
+    };
     public isAuthorized = {
         async callAsync(
             _operator: string,
             _assetId: BigNumber,
-        callData: Partial<CallData> = {},
+            callData: Partial<CallData> = {},
             defaultBlock?: BlockParam,
         ): Promise<boolean
         > {
             const self = this as any as DebtEngineContract;
             const encodedData = self._strictEncodeArguments('isAuthorized(address,uint256)', [_operator,
-        _assetId
-        ]);
+                _assetId
+            ]);
             const callDataWithDefaults = await BaseContract._applyDefaultsToTxDataAsync(
-            {
-            to: self.address,
-            ...callData,
-            data: encodedData,
-            },
-            self._web3Wrapper.getContractDefaults(),
+                {
+                    to: self.address,
+                    ...callData,
+                    data: encodedData,
+                },
+                self._web3Wrapper.getContractDefaults(),
             );
             const rawCallResult = await self._web3Wrapper.callAsync(callDataWithDefaults, defaultBlock);
             BaseContract._throwIfRevertWithReasonCallResult(rawCallResult);
             const abiEncoder = self._lookupAbiEncoder('isAuthorized(address,uint256)');
             // tslint:disable boolean-naming
             const result = abiEncoder.strictDecodeReturnValue<boolean
-        >(rawCallResult);
+                >(rawCallResult);
             // tslint:enable boolean-naming
             return result;
-        },};
+        },
+    };
     public assetsOf = {
         async callAsync(
             _owner: string,
-        callData: Partial<CallData> = {},
+            callData: Partial<CallData> = {},
             defaultBlock?: BlockParam,
         ): Promise<BigNumber[]
         > {
             const self = this as any as DebtEngineContract;
             const encodedData = self._strictEncodeArguments('assetsOf(address)', [_owner
-        ]);
+            ]);
             const callDataWithDefaults = await BaseContract._applyDefaultsToTxDataAsync(
-            {
-            to: self.address,
-            ...callData,
-            data: encodedData,
-            },
-            self._web3Wrapper.getContractDefaults(),
+                {
+                    to: self.address,
+                    ...callData,
+                    data: encodedData,
+                },
+                self._web3Wrapper.getContractDefaults(),
             );
             const rawCallResult = await self._web3Wrapper.callAsync(callDataWithDefaults, defaultBlock);
             BaseContract._throwIfRevertWithReasonCallResult(rawCallResult);
             const abiEncoder = self._lookupAbiEncoder('assetsOf(address)');
             // tslint:disable boolean-naming
             const result = abiEncoder.strictDecodeReturnValue<BigNumber[]
-        >(rawCallResult);
+                >(rawCallResult);
             // tslint:enable boolean-naming
             return result;
-        },};
+        },
+    };
     public tokenOfOwnerByIndex = {
         async callAsync(
             _owner: string,
             _index: BigNumber,
-        callData: Partial<CallData> = {},
+            callData: Partial<CallData> = {},
             defaultBlock?: BlockParam,
         ): Promise<BigNumber
         > {
             const self = this as any as DebtEngineContract;
             const encodedData = self._strictEncodeArguments('tokenOfOwnerByIndex(address,uint256)', [_owner,
-        _index
-        ]);
+                _index
+            ]);
             const callDataWithDefaults = await BaseContract._applyDefaultsToTxDataAsync(
-            {
-            to: self.address,
-            ...callData,
-            data: encodedData,
-            },
-            self._web3Wrapper.getContractDefaults(),
+                {
+                    to: self.address,
+                    ...callData,
+                    data: encodedData,
+                },
+                self._web3Wrapper.getContractDefaults(),
             );
             const rawCallResult = await self._web3Wrapper.callAsync(callDataWithDefaults, defaultBlock);
             BaseContract._throwIfRevertWithReasonCallResult(rawCallResult);
             const abiEncoder = self._lookupAbiEncoder('tokenOfOwnerByIndex(address,uint256)');
             // tslint:disable boolean-naming
             const result = abiEncoder.strictDecodeReturnValue<BigNumber
-        >(rawCallResult);
+                >(rawCallResult);
             // tslint:enable boolean-naming
             return result;
-        },};
+        },
+    };
     public safeTransferFrom1 = {
         async sendTransactionAsync(
             _from: string,
@@ -568,9 +577,9 @@ export class DebtEngineContract extends BaseContract {
         ): Promise<Response> {
             const self = this as any as DebtEngineContract;
             const encodedData = self._strictEncodeArguments('safeTransferFrom(address,address,uint256)', [_from,
-    _to,
-    _assetId
-    ]);
+                _to,
+                _assetId
+            ]);
             const contractDefaults = self._web3Wrapper.getContractDefaults();
             const defaultFromAddress = (await self._web3Wrapper.getAvailableAddressesAsync())[0];
             const txDataWithDefaults = await BaseContract._applyDefaultsToTxDataAsync(
@@ -586,15 +595,15 @@ export class DebtEngineContract extends BaseContract {
                 self.safeTransferFrom1.estimateGasAsync.bind<DebtEngineContract, any, Promise<number>>(
                     self,
                     _from,
-    _to,
-    _assetId
-    ,
+                    _to,
+                    _assetId
+                    ,
                     estimateGasFactor,
                 ),
             );
             const txHash = await self._web3Wrapper.sendTransactionAsync(txDataWithDefaults);
             const receipt = self._web3Wrapper.awaitTransactionSuccessAsync(txHash);
-    
+
             return new Response(txHash, receipt);
         },
         async estimateGasAsync(
@@ -606,10 +615,10 @@ export class DebtEngineContract extends BaseContract {
         ): Promise<number> {
             const self = this as any as DebtEngineContract;
             const encodedData = self._strictEncodeArguments('safeTransferFrom(address,address,uint256)',
-            [_from,
-    _to,
-    _assetId
-    ]);
+                [_from,
+                    _to,
+                    _assetId
+                ]);
             const contractDefaults = self._web3Wrapper.getContractDefaults();
             const defaultFromAddress = (await self._web3Wrapper.getAvailableAddressesAsync())[0];
             const txDataWithDefaults = await BaseContract._applyDefaultsToTxDataAsync(
@@ -636,225 +645,233 @@ export class DebtEngineContract extends BaseContract {
         ): string {
             const self = this as any as DebtEngineContract;
             const abiEncodedTransactionData = self._strictEncodeArguments('safeTransferFrom(address,address,uint256)',
-            [_from,
-    _to,
-    _assetId
-    ]);
+                [_from,
+                    _to,
+                    _assetId
+                ]);
             return abiEncodedTransactionData;
         },
         async callAsync(
             _from: string,
             _to: string,
             _assetId: BigNumber,
-        callData: Partial<CallData> = {},
+            callData: Partial<CallData> = {},
             defaultBlock?: BlockParam,
         ): Promise<void
         > {
             const self = this as any as DebtEngineContract;
             const encodedData = self._strictEncodeArguments('safeTransferFrom(address,address,uint256)', [_from,
-        _to,
-        _assetId
-        ]);
+                _to,
+                _assetId
+            ]);
             const callDataWithDefaults = await BaseContract._applyDefaultsToTxDataAsync(
-            {
-            to: self.address,
-            ...callData,
-            data: encodedData,
-            },
-            self._web3Wrapper.getContractDefaults(),
+                {
+                    to: self.address,
+                    ...callData,
+                    data: encodedData,
+                },
+                self._web3Wrapper.getContractDefaults(),
             );
             const rawCallResult = await self._web3Wrapper.callAsync(callDataWithDefaults, defaultBlock);
             BaseContract._throwIfRevertWithReasonCallResult(rawCallResult);
             const abiEncoder = self._lookupAbiEncoder('safeTransferFrom(address,address,uint256)');
             // tslint:disable boolean-naming
             const result = abiEncoder.strictDecodeReturnValue<void
-        >(rawCallResult);
+                >(rawCallResult);
             // tslint:enable boolean-naming
             return result;
-        },};
+        },
+    };
     public tokenByIndex = {
         async callAsync(
             _index: BigNumber,
-        callData: Partial<CallData> = {},
+            callData: Partial<CallData> = {},
             defaultBlock?: BlockParam,
         ): Promise<BigNumber
         > {
             const self = this as any as DebtEngineContract;
             const encodedData = self._strictEncodeArguments('tokenByIndex(uint256)', [_index
-        ]);
+            ]);
             const callDataWithDefaults = await BaseContract._applyDefaultsToTxDataAsync(
-            {
-            to: self.address,
-            ...callData,
-            data: encodedData,
-            },
-            self._web3Wrapper.getContractDefaults(),
+                {
+                    to: self.address,
+                    ...callData,
+                    data: encodedData,
+                },
+                self._web3Wrapper.getContractDefaults(),
             );
             const rawCallResult = await self._web3Wrapper.callAsync(callDataWithDefaults, defaultBlock);
             BaseContract._throwIfRevertWithReasonCallResult(rawCallResult);
             const abiEncoder = self._lookupAbiEncoder('tokenByIndex(uint256)');
             // tslint:disable boolean-naming
             const result = abiEncoder.strictDecodeReturnValue<BigNumber
-        >(rawCallResult);
+                >(rawCallResult);
             // tslint:enable boolean-naming
             return result;
-        },};
+        },
+    };
     public ownerOf = {
         async callAsync(
             _assetId: BigNumber,
-        callData: Partial<CallData> = {},
+            callData: Partial<CallData> = {},
             defaultBlock?: BlockParam,
         ): Promise<string
         > {
             const self = this as any as DebtEngineContract;
             const encodedData = self._strictEncodeArguments('ownerOf(uint256)', [_assetId
-        ]);
+            ]);
             const callDataWithDefaults = await BaseContract._applyDefaultsToTxDataAsync(
-            {
-            to: self.address,
-            ...callData,
-            data: encodedData,
-            },
-            self._web3Wrapper.getContractDefaults(),
+                {
+                    to: self.address,
+                    ...callData,
+                    data: encodedData,
+                },
+                self._web3Wrapper.getContractDefaults(),
             );
             const rawCallResult = await self._web3Wrapper.callAsync(callDataWithDefaults, defaultBlock);
             BaseContract._throwIfRevertWithReasonCallResult(rawCallResult);
             const abiEncoder = self._lookupAbiEncoder('ownerOf(uint256)');
             // tslint:disable boolean-naming
             const result = abiEncoder.strictDecodeReturnValue<string
-        >(rawCallResult);
+                >(rawCallResult);
             // tslint:enable boolean-naming
             return result;
-        },};
+        },
+    };
     public allTokens = {
         async callAsync(
-        callData: Partial<CallData> = {},
+            callData: Partial<CallData> = {},
             defaultBlock?: BlockParam,
         ): Promise<BigNumber[]
         > {
             const self = this as any as DebtEngineContract;
             const encodedData = self._strictEncodeArguments('allTokens()', []);
             const callDataWithDefaults = await BaseContract._applyDefaultsToTxDataAsync(
-            {
-            to: self.address,
-            ...callData,
-            data: encodedData,
-            },
-            self._web3Wrapper.getContractDefaults(),
+                {
+                    to: self.address,
+                    ...callData,
+                    data: encodedData,
+                },
+                self._web3Wrapper.getContractDefaults(),
             );
             const rawCallResult = await self._web3Wrapper.callAsync(callDataWithDefaults, defaultBlock);
             BaseContract._throwIfRevertWithReasonCallResult(rawCallResult);
             const abiEncoder = self._lookupAbiEncoder('allTokens()');
             // tslint:disable boolean-naming
             const result = abiEncoder.strictDecodeReturnValue<BigNumber[]
-        >(rawCallResult);
+                >(rawCallResult);
             // tslint:enable boolean-naming
             return result;
-        },};
+        },
+    };
     public balanceOf = {
         async callAsync(
             _owner: string,
-        callData: Partial<CallData> = {},
+            callData: Partial<CallData> = {},
             defaultBlock?: BlockParam,
         ): Promise<BigNumber
         > {
             const self = this as any as DebtEngineContract;
             const encodedData = self._strictEncodeArguments('balanceOf(address)', [_owner
-        ]);
+            ]);
             const callDataWithDefaults = await BaseContract._applyDefaultsToTxDataAsync(
-            {
-            to: self.address,
-            ...callData,
-            data: encodedData,
-            },
-            self._web3Wrapper.getContractDefaults(),
+                {
+                    to: self.address,
+                    ...callData,
+                    data: encodedData,
+                },
+                self._web3Wrapper.getContractDefaults(),
             );
             const rawCallResult = await self._web3Wrapper.callAsync(callDataWithDefaults, defaultBlock);
             BaseContract._throwIfRevertWithReasonCallResult(rawCallResult);
             const abiEncoder = self._lookupAbiEncoder('balanceOf(address)');
             // tslint:disable boolean-naming
             const result = abiEncoder.strictDecodeReturnValue<BigNumber
-        >(rawCallResult);
+                >(rawCallResult);
             // tslint:enable boolean-naming
             return result;
-        },};
+        },
+    };
     public nonces = {
         async callAsync(
             index_0: string,
-        callData: Partial<CallData> = {},
+            callData: Partial<CallData> = {},
             defaultBlock?: BlockParam,
         ): Promise<BigNumber
         > {
             const self = this as any as DebtEngineContract;
             const encodedData = self._strictEncodeArguments('nonces(address)', [index_0
-        ]);
+            ]);
             const callDataWithDefaults = await BaseContract._applyDefaultsToTxDataAsync(
-            {
-            to: self.address,
-            ...callData,
-            data: encodedData,
-            },
-            self._web3Wrapper.getContractDefaults(),
+                {
+                    to: self.address,
+                    ...callData,
+                    data: encodedData,
+                },
+                self._web3Wrapper.getContractDefaults(),
             );
             const rawCallResult = await self._web3Wrapper.callAsync(callDataWithDefaults, defaultBlock);
             BaseContract._throwIfRevertWithReasonCallResult(rawCallResult);
             const abiEncoder = self._lookupAbiEncoder('nonces(address)');
             // tslint:disable boolean-naming
             const result = abiEncoder.strictDecodeReturnValue<BigNumber
-        >(rawCallResult);
+                >(rawCallResult);
             // tslint:enable boolean-naming
             return result;
-        },};
+        },
+    };
     public owner = {
         async callAsync(
-        callData: Partial<CallData> = {},
+            callData: Partial<CallData> = {},
             defaultBlock?: BlockParam,
         ): Promise<string
         > {
             const self = this as any as DebtEngineContract;
             const encodedData = self._strictEncodeArguments('owner()', []);
             const callDataWithDefaults = await BaseContract._applyDefaultsToTxDataAsync(
-            {
-            to: self.address,
-            ...callData,
-            data: encodedData,
-            },
-            self._web3Wrapper.getContractDefaults(),
+                {
+                    to: self.address,
+                    ...callData,
+                    data: encodedData,
+                },
+                self._web3Wrapper.getContractDefaults(),
             );
             const rawCallResult = await self._web3Wrapper.callAsync(callDataWithDefaults, defaultBlock);
             BaseContract._throwIfRevertWithReasonCallResult(rawCallResult);
             const abiEncoder = self._lookupAbiEncoder('owner()');
             // tslint:disable boolean-naming
             const result = abiEncoder.strictDecodeReturnValue<string
-        >(rawCallResult);
+                >(rawCallResult);
             // tslint:enable boolean-naming
             return result;
-        },};
+        },
+    };
     public symbol = {
         async callAsync(
-        callData: Partial<CallData> = {},
+            callData: Partial<CallData> = {},
             defaultBlock?: BlockParam,
         ): Promise<string
         > {
             const self = this as any as DebtEngineContract;
             const encodedData = self._strictEncodeArguments('symbol()', []);
             const callDataWithDefaults = await BaseContract._applyDefaultsToTxDataAsync(
-            {
-            to: self.address,
-            ...callData,
-            data: encodedData,
-            },
-            self._web3Wrapper.getContractDefaults(),
+                {
+                    to: self.address,
+                    ...callData,
+                    data: encodedData,
+                },
+                self._web3Wrapper.getContractDefaults(),
             );
             const rawCallResult = await self._web3Wrapper.callAsync(callDataWithDefaults, defaultBlock);
             BaseContract._throwIfRevertWithReasonCallResult(rawCallResult);
             const abiEncoder = self._lookupAbiEncoder('symbol()');
             // tslint:disable boolean-naming
             const result = abiEncoder.strictDecodeReturnValue<string
-        >(rawCallResult);
+                >(rawCallResult);
             // tslint:enable boolean-naming
             return result;
-        },};
+        },
+    };
     public setApprovalForAll = {
         async sendTransactionAsync(
             _operator: string,
@@ -864,8 +881,8 @@ export class DebtEngineContract extends BaseContract {
         ): Promise<Response> {
             const self = this as any as DebtEngineContract;
             const encodedData = self._strictEncodeArguments('setApprovalForAll(address,bool)', [_operator,
-    _authorized
-    ]);
+                _authorized
+            ]);
             const contractDefaults = self._web3Wrapper.getContractDefaults();
             const defaultFromAddress = (await self._web3Wrapper.getAvailableAddressesAsync())[0];
             const txDataWithDefaults = await BaseContract._applyDefaultsToTxDataAsync(
@@ -881,14 +898,14 @@ export class DebtEngineContract extends BaseContract {
                 self.setApprovalForAll.estimateGasAsync.bind<DebtEngineContract, any, Promise<number>>(
                     self,
                     _operator,
-    _authorized
-    ,
+                    _authorized
+                    ,
                     estimateGasFactor,
                 ),
             );
             const txHash = await self._web3Wrapper.sendTransactionAsync(txDataWithDefaults);
             const receipt = self._web3Wrapper.awaitTransactionSuccessAsync(txHash);
-    
+
             return new Response(txHash, receipt);
         },
         async estimateGasAsync(
@@ -899,9 +916,9 @@ export class DebtEngineContract extends BaseContract {
         ): Promise<number> {
             const self = this as any as DebtEngineContract;
             const encodedData = self._strictEncodeArguments('setApprovalForAll(address,bool)',
-            [_operator,
-    _authorized
-    ]);
+                [_operator,
+                    _authorized
+                ]);
             const contractDefaults = self._web3Wrapper.getContractDefaults();
             const defaultFromAddress = (await self._web3Wrapper.getAvailableAddressesAsync())[0];
             const txDataWithDefaults = await BaseContract._applyDefaultsToTxDataAsync(
@@ -927,66 +944,68 @@ export class DebtEngineContract extends BaseContract {
         ): string {
             const self = this as any as DebtEngineContract;
             const abiEncodedTransactionData = self._strictEncodeArguments('setApprovalForAll(address,bool)',
-            [_operator,
-    _authorized
-    ]);
+                [_operator,
+                    _authorized
+                ]);
             return abiEncodedTransactionData;
         },
         async callAsync(
             _operator: string,
             _authorized: boolean,
-        callData: Partial<CallData> = {},
+            callData: Partial<CallData> = {},
             defaultBlock?: BlockParam,
         ): Promise<void
         > {
             const self = this as any as DebtEngineContract;
             const encodedData = self._strictEncodeArguments('setApprovalForAll(address,bool)', [_operator,
-        _authorized
-        ]);
+                _authorized
+            ]);
             const callDataWithDefaults = await BaseContract._applyDefaultsToTxDataAsync(
-            {
-            to: self.address,
-            ...callData,
-            data: encodedData,
-            },
-            self._web3Wrapper.getContractDefaults(),
+                {
+                    to: self.address,
+                    ...callData,
+                    data: encodedData,
+                },
+                self._web3Wrapper.getContractDefaults(),
             );
             const rawCallResult = await self._web3Wrapper.callAsync(callDataWithDefaults, defaultBlock);
             BaseContract._throwIfRevertWithReasonCallResult(rawCallResult);
             const abiEncoder = self._lookupAbiEncoder('setApprovalForAll(address,bool)');
             // tslint:disable boolean-naming
             const result = abiEncoder.strictDecodeReturnValue<void
-        >(rawCallResult);
+                >(rawCallResult);
             // tslint:enable boolean-naming
             return result;
-        },};
+        },
+    };
     public debts = {
         async callAsync(
             index_0: string,
-        callData: Partial<CallData> = {},
+            callData: Partial<CallData> = {},
             defaultBlock?: BlockParam,
         ): Promise<[boolean, BigNumber, string, string, string]
         > {
             const self = this as any as DebtEngineContract;
             const encodedData = self._strictEncodeArguments('debts(bytes32)', [index_0
-        ]);
+            ]);
             const callDataWithDefaults = await BaseContract._applyDefaultsToTxDataAsync(
-            {
-            to: self.address,
-            ...callData,
-            data: encodedData,
-            },
-            self._web3Wrapper.getContractDefaults(),
+                {
+                    to: self.address,
+                    ...callData,
+                    data: encodedData,
+                },
+                self._web3Wrapper.getContractDefaults(),
             );
             const rawCallResult = await self._web3Wrapper.callAsync(callDataWithDefaults, defaultBlock);
             BaseContract._throwIfRevertWithReasonCallResult(rawCallResult);
             const abiEncoder = self._lookupAbiEncoder('debts(bytes32)');
             // tslint:disable boolean-naming
             const result = abiEncoder.strictDecodeReturnValue<[boolean, BigNumber, string, string, string]
-        >(rawCallResult);
+                >(rawCallResult);
             // tslint:enable boolean-naming
             return result;
-        },};
+        },
+    };
     public safeTransferFrom2 = {
         async sendTransactionAsync(
             _from: string,
@@ -998,10 +1017,10 @@ export class DebtEngineContract extends BaseContract {
         ): Promise<Response> {
             const self = this as any as DebtEngineContract;
             const encodedData = self._strictEncodeArguments('safeTransferFrom(address,address,uint256,bytes)', [_from,
-    _to,
-    _assetId,
-    _userData
-    ]);
+                _to,
+                _assetId,
+                _userData
+            ]);
             const contractDefaults = self._web3Wrapper.getContractDefaults();
             const defaultFromAddress = (await self._web3Wrapper.getAvailableAddressesAsync())[0];
             const txDataWithDefaults = await BaseContract._applyDefaultsToTxDataAsync(
@@ -1017,16 +1036,16 @@ export class DebtEngineContract extends BaseContract {
                 self.safeTransferFrom2.estimateGasAsync.bind<DebtEngineContract, any, Promise<number>>(
                     self,
                     _from,
-    _to,
-    _assetId,
-    _userData
-    ,
+                    _to,
+                    _assetId,
+                    _userData
+                    ,
                     estimateGasFactor,
                 ),
             );
             const txHash = await self._web3Wrapper.sendTransactionAsync(txDataWithDefaults);
             const receipt = self._web3Wrapper.awaitTransactionSuccessAsync(txHash);
-    
+
             return new Response(txHash, receipt);
         },
         async estimateGasAsync(
@@ -1039,11 +1058,11 @@ export class DebtEngineContract extends BaseContract {
         ): Promise<number> {
             const self = this as any as DebtEngineContract;
             const encodedData = self._strictEncodeArguments('safeTransferFrom(address,address,uint256,bytes)',
-            [_from,
-    _to,
-    _assetId,
-    _userData
-    ]);
+                [_from,
+                    _to,
+                    _assetId,
+                    _userData
+                ]);
             const contractDefaults = self._web3Wrapper.getContractDefaults();
             const defaultFromAddress = (await self._web3Wrapper.getAvailableAddressesAsync())[0];
             const txDataWithDefaults = await BaseContract._applyDefaultsToTxDataAsync(
@@ -1071,11 +1090,11 @@ export class DebtEngineContract extends BaseContract {
         ): string {
             const self = this as any as DebtEngineContract;
             const abiEncodedTransactionData = self._strictEncodeArguments('safeTransferFrom(address,address,uint256,bytes)',
-            [_from,
-    _to,
-    _assetId,
-    _userData
-    ]);
+                [_from,
+                    _to,
+                    _assetId,
+                    _userData
+                ]);
             return abiEncodedTransactionData;
         },
         async callAsync(
@@ -1083,89 +1102,92 @@ export class DebtEngineContract extends BaseContract {
             _to: string,
             _assetId: BigNumber,
             _userData: string,
-        callData: Partial<CallData> = {},
+            callData: Partial<CallData> = {},
             defaultBlock?: BlockParam,
         ): Promise<void
         > {
             const self = this as any as DebtEngineContract;
             const encodedData = self._strictEncodeArguments('safeTransferFrom(address,address,uint256,bytes)', [_from,
-        _to,
-        _assetId,
-        _userData
-        ]);
+                _to,
+                _assetId,
+                _userData
+            ]);
             const callDataWithDefaults = await BaseContract._applyDefaultsToTxDataAsync(
-            {
-            to: self.address,
-            ...callData,
-            data: encodedData,
-            },
-            self._web3Wrapper.getContractDefaults(),
+                {
+                    to: self.address,
+                    ...callData,
+                    data: encodedData,
+                },
+                self._web3Wrapper.getContractDefaults(),
             );
             const rawCallResult = await self._web3Wrapper.callAsync(callDataWithDefaults, defaultBlock);
             BaseContract._throwIfRevertWithReasonCallResult(rawCallResult);
             const abiEncoder = self._lookupAbiEncoder('safeTransferFrom(address,address,uint256,bytes)');
             // tslint:disable boolean-naming
             const result = abiEncoder.strictDecodeReturnValue<void
-        >(rawCallResult);
+                >(rawCallResult);
             // tslint:enable boolean-naming
             return result;
-        },};
+        },
+    };
     public tokenURI = {
         async callAsync(
             _tokenId: BigNumber,
-        callData: Partial<CallData> = {},
+            callData: Partial<CallData> = {},
             defaultBlock?: BlockParam,
         ): Promise<string
         > {
             const self = this as any as DebtEngineContract;
             const encodedData = self._strictEncodeArguments('tokenURI(uint256)', [_tokenId
-        ]);
+            ]);
             const callDataWithDefaults = await BaseContract._applyDefaultsToTxDataAsync(
-            {
-            to: self.address,
-            ...callData,
-            data: encodedData,
-            },
-            self._web3Wrapper.getContractDefaults(),
+                {
+                    to: self.address,
+                    ...callData,
+                    data: encodedData,
+                },
+                self._web3Wrapper.getContractDefaults(),
             );
             const rawCallResult = await self._web3Wrapper.callAsync(callDataWithDefaults, defaultBlock);
             BaseContract._throwIfRevertWithReasonCallResult(rawCallResult);
             const abiEncoder = self._lookupAbiEncoder('tokenURI(uint256)');
             // tslint:disable boolean-naming
             const result = abiEncoder.strictDecodeReturnValue<string
-        >(rawCallResult);
+                >(rawCallResult);
             // tslint:enable boolean-naming
             return result;
-        },};
+        },
+    };
     public isApprovedForAll = {
         async callAsync(
             _operator: string,
             _assetHolder: string,
-        callData: Partial<CallData> = {},
+            callData: Partial<CallData> = {},
             defaultBlock?: BlockParam,
         ): Promise<boolean
         > {
             const self = this as any as DebtEngineContract;
             const encodedData = self._strictEncodeArguments('isApprovedForAll(address,address)', [_operator,
-        _assetHolder
-        ]);
+                _assetHolder
+            ]);
             const callDataWithDefaults = await BaseContract._applyDefaultsToTxDataAsync(
-            {
-            to: self.address,
-            ...callData,
-            data: encodedData,
-            },
-            self._web3Wrapper.getContractDefaults(),
+                {
+                    to: self.address,
+                    ...callData,
+                    data: encodedData,
+                },
+                self._web3Wrapper.getContractDefaults(),
             );
             const rawCallResult = await self._web3Wrapper.callAsync(callDataWithDefaults, defaultBlock);
             BaseContract._throwIfRevertWithReasonCallResult(rawCallResult);
             const abiEncoder = self._lookupAbiEncoder('isApprovedForAll(address,address)');
             // tslint:disable boolean-naming
             const result = abiEncoder.strictDecodeReturnValue<boolean
-        >(rawCallResult);
+                >(rawCallResult);
             // tslint:enable boolean-naming
             return result;
-        },};
+        },
+    };
     public transferOwnership = {
         async sendTransactionAsync(
             _newOwner: string,
@@ -1174,7 +1196,7 @@ export class DebtEngineContract extends BaseContract {
         ): Promise<Response> {
             const self = this as any as DebtEngineContract;
             const encodedData = self._strictEncodeArguments('transferOwnership(address)', [_newOwner
-    ]);
+            ]);
             const contractDefaults = self._web3Wrapper.getContractDefaults();
             const defaultFromAddress = (await self._web3Wrapper.getAvailableAddressesAsync())[0];
             const txDataWithDefaults = await BaseContract._applyDefaultsToTxDataAsync(
@@ -1190,13 +1212,13 @@ export class DebtEngineContract extends BaseContract {
                 self.transferOwnership.estimateGasAsync.bind<DebtEngineContract, any, Promise<number>>(
                     self,
                     _newOwner
-    ,
+                    ,
                     estimateGasFactor,
                 ),
             );
             const txHash = await self._web3Wrapper.sendTransactionAsync(txDataWithDefaults);
             const receipt = self._web3Wrapper.awaitTransactionSuccessAsync(txHash);
-    
+
             return new Response(txHash, receipt);
         },
         async estimateGasAsync(
@@ -1206,8 +1228,8 @@ export class DebtEngineContract extends BaseContract {
         ): Promise<number> {
             const self = this as any as DebtEngineContract;
             const encodedData = self._strictEncodeArguments('transferOwnership(address)',
-            [_newOwner
-    ]);
+                [_newOwner
+                ]);
             const contractDefaults = self._web3Wrapper.getContractDefaults();
             const defaultFromAddress = (await self._web3Wrapper.getAvailableAddressesAsync())[0];
             const txDataWithDefaults = await BaseContract._applyDefaultsToTxDataAsync(
@@ -1232,61 +1254,63 @@ export class DebtEngineContract extends BaseContract {
         ): string {
             const self = this as any as DebtEngineContract;
             const abiEncodedTransactionData = self._strictEncodeArguments('transferOwnership(address)',
-            [_newOwner
-    ]);
+                [_newOwner
+                ]);
             return abiEncodedTransactionData;
         },
         async callAsync(
             _newOwner: string,
-        callData: Partial<CallData> = {},
+            callData: Partial<CallData> = {},
             defaultBlock?: BlockParam,
         ): Promise<void
         > {
             const self = this as any as DebtEngineContract;
             const encodedData = self._strictEncodeArguments('transferOwnership(address)', [_newOwner
-        ]);
+            ]);
             const callDataWithDefaults = await BaseContract._applyDefaultsToTxDataAsync(
-            {
-            to: self.address,
-            ...callData,
-            data: encodedData,
-            },
-            self._web3Wrapper.getContractDefaults(),
+                {
+                    to: self.address,
+                    ...callData,
+                    data: encodedData,
+                },
+                self._web3Wrapper.getContractDefaults(),
             );
             const rawCallResult = await self._web3Wrapper.callAsync(callDataWithDefaults, defaultBlock);
             BaseContract._throwIfRevertWithReasonCallResult(rawCallResult);
             const abiEncoder = self._lookupAbiEncoder('transferOwnership(address)');
             // tslint:disable boolean-naming
             const result = abiEncoder.strictDecodeReturnValue<void
-        >(rawCallResult);
+                >(rawCallResult);
             // tslint:enable boolean-naming
             return result;
-        },};
+        },
+    };
     public token = {
         async callAsync(
-        callData: Partial<CallData> = {},
+            callData: Partial<CallData> = {},
             defaultBlock?: BlockParam,
         ): Promise<string
         > {
             const self = this as any as DebtEngineContract;
             const encodedData = self._strictEncodeArguments('token()', []);
             const callDataWithDefaults = await BaseContract._applyDefaultsToTxDataAsync(
-            {
-            to: self.address,
-            ...callData,
-            data: encodedData,
-            },
-            self._web3Wrapper.getContractDefaults(),
+                {
+                    to: self.address,
+                    ...callData,
+                    data: encodedData,
+                },
+                self._web3Wrapper.getContractDefaults(),
             );
             const rawCallResult = await self._web3Wrapper.callAsync(callDataWithDefaults, defaultBlock);
             BaseContract._throwIfRevertWithReasonCallResult(rawCallResult);
             const abiEncoder = self._lookupAbiEncoder('token()');
             // tslint:disable boolean-naming
             const result = abiEncoder.strictDecodeReturnValue<string
-        >(rawCallResult);
+                >(rawCallResult);
             // tslint:enable boolean-naming
             return result;
-        },};
+        },
+    };
     public setURIProvider = {
         async sendTransactionAsync(
             _provider: string,
@@ -1295,7 +1319,7 @@ export class DebtEngineContract extends BaseContract {
         ): Promise<Response> {
             const self = this as any as DebtEngineContract;
             const encodedData = self._strictEncodeArguments('setURIProvider(address)', [_provider
-    ]);
+            ]);
             const contractDefaults = self._web3Wrapper.getContractDefaults();
             const defaultFromAddress = (await self._web3Wrapper.getAvailableAddressesAsync())[0];
             const txDataWithDefaults = await BaseContract._applyDefaultsToTxDataAsync(
@@ -1311,13 +1335,13 @@ export class DebtEngineContract extends BaseContract {
                 self.setURIProvider.estimateGasAsync.bind<DebtEngineContract, any, Promise<number>>(
                     self,
                     _provider
-    ,
+                    ,
                     estimateGasFactor,
                 ),
             );
             const txHash = await self._web3Wrapper.sendTransactionAsync(txDataWithDefaults);
             const receipt = self._web3Wrapper.awaitTransactionSuccessAsync(txHash);
-    
+
             return new Response(txHash, receipt);
         },
         async estimateGasAsync(
@@ -1327,8 +1351,8 @@ export class DebtEngineContract extends BaseContract {
         ): Promise<number> {
             const self = this as any as DebtEngineContract;
             const encodedData = self._strictEncodeArguments('setURIProvider(address)',
-            [_provider
-    ]);
+                [_provider
+                ]);
             const contractDefaults = self._web3Wrapper.getContractDefaults();
             const defaultFromAddress = (await self._web3Wrapper.getAvailableAddressesAsync())[0];
             const txDataWithDefaults = await BaseContract._applyDefaultsToTxDataAsync(
@@ -1353,36 +1377,37 @@ export class DebtEngineContract extends BaseContract {
         ): string {
             const self = this as any as DebtEngineContract;
             const abiEncodedTransactionData = self._strictEncodeArguments('setURIProvider(address)',
-            [_provider
-    ]);
+                [_provider
+                ]);
             return abiEncodedTransactionData;
         },
         async callAsync(
             _provider: string,
-        callData: Partial<CallData> = {},
+            callData: Partial<CallData> = {},
             defaultBlock?: BlockParam,
         ): Promise<void
         > {
             const self = this as any as DebtEngineContract;
             const encodedData = self._strictEncodeArguments('setURIProvider(address)', [_provider
-        ]);
+            ]);
             const callDataWithDefaults = await BaseContract._applyDefaultsToTxDataAsync(
-            {
-            to: self.address,
-            ...callData,
-            data: encodedData,
-            },
-            self._web3Wrapper.getContractDefaults(),
+                {
+                    to: self.address,
+                    ...callData,
+                    data: encodedData,
+                },
+                self._web3Wrapper.getContractDefaults(),
             );
             const rawCallResult = await self._web3Wrapper.callAsync(callDataWithDefaults, defaultBlock);
             BaseContract._throwIfRevertWithReasonCallResult(rawCallResult);
             const abiEncoder = self._lookupAbiEncoder('setURIProvider(address)');
             // tslint:disable boolean-naming
             const result = abiEncoder.strictDecodeReturnValue<void
-        >(rawCallResult);
+                >(rawCallResult);
             // tslint:enable boolean-naming
             return result;
-        },};
+        },
+    };
     public create = {
         async sendTransactionAsync(
             _model: string,
@@ -1394,10 +1419,10 @@ export class DebtEngineContract extends BaseContract {
         ): Promise<Response> {
             const self = this as any as DebtEngineContract;
             const encodedData = self._strictEncodeArguments('create(address,address,address,bytes)', [_model,
-    _owner,
-    _oracle,
-    _data
-    ]);
+                _owner,
+                _oracle,
+                _data
+            ]);
             const contractDefaults = self._web3Wrapper.getContractDefaults();
             const defaultFromAddress = (await self._web3Wrapper.getAvailableAddressesAsync())[0];
             const txDataWithDefaults = await BaseContract._applyDefaultsToTxDataAsync(
@@ -1413,16 +1438,16 @@ export class DebtEngineContract extends BaseContract {
                 self.create.estimateGasAsync.bind<DebtEngineContract, any, Promise<number>>(
                     self,
                     _model,
-    _owner,
-    _oracle,
-    _data
-    ,
+                    _owner,
+                    _oracle,
+                    _data
+                    ,
                     estimateGasFactor,
                 ),
             );
             const txHash = await self._web3Wrapper.sendTransactionAsync(txDataWithDefaults);
             const receipt = self._web3Wrapper.awaitTransactionSuccessAsync(txHash);
-    
+
             return new Response(txHash, receipt);
         },
         async estimateGasAsync(
@@ -1435,11 +1460,11 @@ export class DebtEngineContract extends BaseContract {
         ): Promise<number> {
             const self = this as any as DebtEngineContract;
             const encodedData = self._strictEncodeArguments('create(address,address,address,bytes)',
-            [_model,
-    _owner,
-    _oracle,
-    _data
-    ]);
+                [_model,
+                    _owner,
+                    _oracle,
+                    _data
+                ]);
             const contractDefaults = self._web3Wrapper.getContractDefaults();
             const defaultFromAddress = (await self._web3Wrapper.getAvailableAddressesAsync())[0];
             const txDataWithDefaults = await BaseContract._applyDefaultsToTxDataAsync(
@@ -1467,11 +1492,11 @@ export class DebtEngineContract extends BaseContract {
         ): string {
             const self = this as any as DebtEngineContract;
             const abiEncodedTransactionData = self._strictEncodeArguments('create(address,address,address,bytes)',
-            [_model,
-    _owner,
-    _oracle,
-    _data
-    ]);
+                [_model,
+                    _owner,
+                    _oracle,
+                    _data
+                ]);
             return abiEncodedTransactionData;
         },
         async callAsync(
@@ -1479,33 +1504,34 @@ export class DebtEngineContract extends BaseContract {
             _owner: string,
             _oracle: string,
             _data: string,
-        callData: Partial<CallData> = {},
+            callData: Partial<CallData> = {},
             defaultBlock?: BlockParam,
         ): Promise<string
         > {
             const self = this as any as DebtEngineContract;
             const encodedData = self._strictEncodeArguments('create(address,address,address,bytes)', [_model,
-        _owner,
-        _oracle,
-        _data
-        ]);
+                _owner,
+                _oracle,
+                _data
+            ]);
             const callDataWithDefaults = await BaseContract._applyDefaultsToTxDataAsync(
-            {
-            to: self.address,
-            ...callData,
-            data: encodedData,
-            },
-            self._web3Wrapper.getContractDefaults(),
+                {
+                    to: self.address,
+                    ...callData,
+                    data: encodedData,
+                },
+                self._web3Wrapper.getContractDefaults(),
             );
             const rawCallResult = await self._web3Wrapper.callAsync(callDataWithDefaults, defaultBlock);
             BaseContract._throwIfRevertWithReasonCallResult(rawCallResult);
             const abiEncoder = self._lookupAbiEncoder('create(address,address,address,bytes)');
             // tslint:disable boolean-naming
             const result = abiEncoder.strictDecodeReturnValue<string
-        >(rawCallResult);
+                >(rawCallResult);
             // tslint:enable boolean-naming
             return result;
-        },};
+        },
+    };
     public create2 = {
         async sendTransactionAsync(
             _model: string,
@@ -1518,11 +1544,11 @@ export class DebtEngineContract extends BaseContract {
         ): Promise<Response> {
             const self = this as any as DebtEngineContract;
             const encodedData = self._strictEncodeArguments('create2(address,address,address,uint256,bytes)', [_model,
-    _owner,
-    _oracle,
-    _salt,
-    _data
-    ]);
+                _owner,
+                _oracle,
+                _salt,
+                _data
+            ]);
             const contractDefaults = self._web3Wrapper.getContractDefaults();
             const defaultFromAddress = (await self._web3Wrapper.getAvailableAddressesAsync())[0];
             const txDataWithDefaults = await BaseContract._applyDefaultsToTxDataAsync(
@@ -1538,17 +1564,17 @@ export class DebtEngineContract extends BaseContract {
                 self.create2.estimateGasAsync.bind<DebtEngineContract, any, Promise<number>>(
                     self,
                     _model,
-    _owner,
-    _oracle,
-    _salt,
-    _data
-    ,
+                    _owner,
+                    _oracle,
+                    _salt,
+                    _data
+                    ,
                     estimateGasFactor,
                 ),
             );
             const txHash = await self._web3Wrapper.sendTransactionAsync(txDataWithDefaults);
             const receipt = self._web3Wrapper.awaitTransactionSuccessAsync(txHash);
-    
+
             return new Response(txHash, receipt);
         },
         async estimateGasAsync(
@@ -1562,12 +1588,12 @@ export class DebtEngineContract extends BaseContract {
         ): Promise<number> {
             const self = this as any as DebtEngineContract;
             const encodedData = self._strictEncodeArguments('create2(address,address,address,uint256,bytes)',
-            [_model,
-    _owner,
-    _oracle,
-    _salt,
-    _data
-    ]);
+                [_model,
+                    _owner,
+                    _oracle,
+                    _salt,
+                    _data
+                ]);
             const contractDefaults = self._web3Wrapper.getContractDefaults();
             const defaultFromAddress = (await self._web3Wrapper.getAvailableAddressesAsync())[0];
             const txDataWithDefaults = await BaseContract._applyDefaultsToTxDataAsync(
@@ -1596,12 +1622,12 @@ export class DebtEngineContract extends BaseContract {
         ): string {
             const self = this as any as DebtEngineContract;
             const abiEncodedTransactionData = self._strictEncodeArguments('create2(address,address,address,uint256,bytes)',
-            [_model,
-    _owner,
-    _oracle,
-    _salt,
-    _data
-    ]);
+                [_model,
+                    _owner,
+                    _oracle,
+                    _salt,
+                    _data
+                ]);
             return abiEncodedTransactionData;
         },
         async callAsync(
@@ -1610,34 +1636,35 @@ export class DebtEngineContract extends BaseContract {
             _oracle: string,
             _salt: BigNumber,
             _data: string,
-        callData: Partial<CallData> = {},
+            callData: Partial<CallData> = {},
             defaultBlock?: BlockParam,
         ): Promise<string
         > {
             const self = this as any as DebtEngineContract;
             const encodedData = self._strictEncodeArguments('create2(address,address,address,uint256,bytes)', [_model,
-        _owner,
-        _oracle,
-        _salt,
-        _data
-        ]);
+                _owner,
+                _oracle,
+                _salt,
+                _data
+            ]);
             const callDataWithDefaults = await BaseContract._applyDefaultsToTxDataAsync(
-            {
-            to: self.address,
-            ...callData,
-            data: encodedData,
-            },
-            self._web3Wrapper.getContractDefaults(),
+                {
+                    to: self.address,
+                    ...callData,
+                    data: encodedData,
+                },
+                self._web3Wrapper.getContractDefaults(),
             );
             const rawCallResult = await self._web3Wrapper.callAsync(callDataWithDefaults, defaultBlock);
             BaseContract._throwIfRevertWithReasonCallResult(rawCallResult);
             const abiEncoder = self._lookupAbiEncoder('create2(address,address,address,uint256,bytes)');
             // tslint:disable boolean-naming
             const result = abiEncoder.strictDecodeReturnValue<string
-        >(rawCallResult);
+                >(rawCallResult);
             // tslint:enable boolean-naming
             return result;
-        },};
+        },
+    };
     public create3 = {
         async sendTransactionAsync(
             _model: string,
@@ -1650,11 +1677,11 @@ export class DebtEngineContract extends BaseContract {
         ): Promise<Response> {
             const self = this as any as DebtEngineContract;
             const encodedData = self._strictEncodeArguments('create3(address,address,address,uint256,bytes)', [_model,
-    _owner,
-    _oracle,
-    _salt,
-    _data
-    ]);
+                _owner,
+                _oracle,
+                _salt,
+                _data
+            ]);
             const contractDefaults = self._web3Wrapper.getContractDefaults();
             const defaultFromAddress = (await self._web3Wrapper.getAvailableAddressesAsync())[0];
             const txDataWithDefaults = await BaseContract._applyDefaultsToTxDataAsync(
@@ -1670,17 +1697,17 @@ export class DebtEngineContract extends BaseContract {
                 self.create3.estimateGasAsync.bind<DebtEngineContract, any, Promise<number>>(
                     self,
                     _model,
-    _owner,
-    _oracle,
-    _salt,
-    _data
-    ,
+                    _owner,
+                    _oracle,
+                    _salt,
+                    _data
+                    ,
                     estimateGasFactor,
                 ),
             );
             const txHash = await self._web3Wrapper.sendTransactionAsync(txDataWithDefaults);
             const receipt = self._web3Wrapper.awaitTransactionSuccessAsync(txHash);
-    
+
             return new Response(txHash, receipt);
         },
         async estimateGasAsync(
@@ -1694,12 +1721,12 @@ export class DebtEngineContract extends BaseContract {
         ): Promise<number> {
             const self = this as any as DebtEngineContract;
             const encodedData = self._strictEncodeArguments('create3(address,address,address,uint256,bytes)',
-            [_model,
-    _owner,
-    _oracle,
-    _salt,
-    _data
-    ]);
+                [_model,
+                    _owner,
+                    _oracle,
+                    _salt,
+                    _data
+                ]);
             const contractDefaults = self._web3Wrapper.getContractDefaults();
             const defaultFromAddress = (await self._web3Wrapper.getAvailableAddressesAsync())[0];
             const txDataWithDefaults = await BaseContract._applyDefaultsToTxDataAsync(
@@ -1728,12 +1755,12 @@ export class DebtEngineContract extends BaseContract {
         ): string {
             const self = this as any as DebtEngineContract;
             const abiEncodedTransactionData = self._strictEncodeArguments('create3(address,address,address,uint256,bytes)',
-            [_model,
-    _owner,
-    _oracle,
-    _salt,
-    _data
-    ]);
+                [_model,
+                    _owner,
+                    _oracle,
+                    _salt,
+                    _data
+                ]);
             return abiEncodedTransactionData;
         },
         async callAsync(
@@ -1742,63 +1769,65 @@ export class DebtEngineContract extends BaseContract {
             _oracle: string,
             _salt: BigNumber,
             _data: string,
-        callData: Partial<CallData> = {},
+            callData: Partial<CallData> = {},
             defaultBlock?: BlockParam,
         ): Promise<string
         > {
             const self = this as any as DebtEngineContract;
             const encodedData = self._strictEncodeArguments('create3(address,address,address,uint256,bytes)', [_model,
-        _owner,
-        _oracle,
-        _salt,
-        _data
-        ]);
+                _owner,
+                _oracle,
+                _salt,
+                _data
+            ]);
             const callDataWithDefaults = await BaseContract._applyDefaultsToTxDataAsync(
-            {
-            to: self.address,
-            ...callData,
-            data: encodedData,
-            },
-            self._web3Wrapper.getContractDefaults(),
+                {
+                    to: self.address,
+                    ...callData,
+                    data: encodedData,
+                },
+                self._web3Wrapper.getContractDefaults(),
             );
             const rawCallResult = await self._web3Wrapper.callAsync(callDataWithDefaults, defaultBlock);
             BaseContract._throwIfRevertWithReasonCallResult(rawCallResult);
             const abiEncoder = self._lookupAbiEncoder('create3(address,address,address,uint256,bytes)');
             // tslint:disable boolean-naming
             const result = abiEncoder.strictDecodeReturnValue<string
-        >(rawCallResult);
+                >(rawCallResult);
             // tslint:enable boolean-naming
             return result;
-        },};
+        },
+    };
     public buildId = {
         async callAsync(
             _creator: string,
             _nonce: BigNumber,
-        callData: Partial<CallData> = {},
+            callData: Partial<CallData> = {},
             defaultBlock?: BlockParam,
         ): Promise<string
         > {
             const self = this as any as DebtEngineContract;
             const encodedData = self._strictEncodeArguments('buildId(address,uint256)', [_creator,
-        _nonce
-        ]);
+                _nonce
+            ]);
             const callDataWithDefaults = await BaseContract._applyDefaultsToTxDataAsync(
-            {
-            to: self.address,
-            ...callData,
-            data: encodedData,
-            },
-            self._web3Wrapper.getContractDefaults(),
+                {
+                    to: self.address,
+                    ...callData,
+                    data: encodedData,
+                },
+                self._web3Wrapper.getContractDefaults(),
             );
             const rawCallResult = await self._web3Wrapper.callAsync(callDataWithDefaults, defaultBlock);
             BaseContract._throwIfRevertWithReasonCallResult(rawCallResult);
             const abiEncoder = self._lookupAbiEncoder('buildId(address,uint256)');
             // tslint:disable boolean-naming
             const result = abiEncoder.strictDecodeReturnValue<string
-        >(rawCallResult);
+                >(rawCallResult);
             // tslint:enable boolean-naming
             return result;
-        },};
+        },
+    };
     public buildId2 = {
         async callAsync(
             _creator: string,
@@ -1806,63 +1835,65 @@ export class DebtEngineContract extends BaseContract {
             _oracle: string,
             _salt: BigNumber,
             _data: string,
-        callData: Partial<CallData> = {},
+            callData: Partial<CallData> = {},
             defaultBlock?: BlockParam,
         ): Promise<string
         > {
             const self = this as any as DebtEngineContract;
             const encodedData = self._strictEncodeArguments('buildId2(address,address,address,uint256,bytes)', [_creator,
-        _model,
-        _oracle,
-        _salt,
-        _data
-        ]);
+                _model,
+                _oracle,
+                _salt,
+                _data
+            ]);
             const callDataWithDefaults = await BaseContract._applyDefaultsToTxDataAsync(
-            {
-            to: self.address,
-            ...callData,
-            data: encodedData,
-            },
-            self._web3Wrapper.getContractDefaults(),
+                {
+                    to: self.address,
+                    ...callData,
+                    data: encodedData,
+                },
+                self._web3Wrapper.getContractDefaults(),
             );
             const rawCallResult = await self._web3Wrapper.callAsync(callDataWithDefaults, defaultBlock);
             BaseContract._throwIfRevertWithReasonCallResult(rawCallResult);
             const abiEncoder = self._lookupAbiEncoder('buildId2(address,address,address,uint256,bytes)');
             // tslint:disable boolean-naming
             const result = abiEncoder.strictDecodeReturnValue<string
-        >(rawCallResult);
+                >(rawCallResult);
             // tslint:enable boolean-naming
             return result;
-        },};
+        },
+    };
     public buildId3 = {
         async callAsync(
             _creator: string,
             _salt: BigNumber,
-        callData: Partial<CallData> = {},
+            callData: Partial<CallData> = {},
             defaultBlock?: BlockParam,
         ): Promise<string
         > {
             const self = this as any as DebtEngineContract;
             const encodedData = self._strictEncodeArguments('buildId3(address,uint256)', [_creator,
-        _salt
-        ]);
+                _salt
+            ]);
             const callDataWithDefaults = await BaseContract._applyDefaultsToTxDataAsync(
-            {
-            to: self.address,
-            ...callData,
-            data: encodedData,
-            },
-            self._web3Wrapper.getContractDefaults(),
+                {
+                    to: self.address,
+                    ...callData,
+                    data: encodedData,
+                },
+                self._web3Wrapper.getContractDefaults(),
             );
             const rawCallResult = await self._web3Wrapper.callAsync(callDataWithDefaults, defaultBlock);
             BaseContract._throwIfRevertWithReasonCallResult(rawCallResult);
             const abiEncoder = self._lookupAbiEncoder('buildId3(address,uint256)');
             // tslint:disable boolean-naming
             const result = abiEncoder.strictDecodeReturnValue<string
-        >(rawCallResult);
+                >(rawCallResult);
             // tslint:enable boolean-naming
             return result;
-        },};
+        },
+    };
     public pay = {
         async sendTransactionAsync(
             _id: string,
@@ -1874,10 +1905,10 @@ export class DebtEngineContract extends BaseContract {
         ): Promise<Response> {
             const self = this as any as DebtEngineContract;
             const encodedData = self._strictEncodeArguments('pay(bytes32,uint256,address,bytes)', [_id,
-    _amount,
-    _origin,
-    _oracleData
-    ]);
+                _amount,
+                _origin,
+                _oracleData
+            ]);
             const contractDefaults = self._web3Wrapper.getContractDefaults();
             const defaultFromAddress = (await self._web3Wrapper.getAvailableAddressesAsync())[0];
             const txDataWithDefaults = await BaseContract._applyDefaultsToTxDataAsync(
@@ -1893,16 +1924,16 @@ export class DebtEngineContract extends BaseContract {
                 self.pay.estimateGasAsync.bind<DebtEngineContract, any, Promise<number>>(
                     self,
                     _id,
-    _amount,
-    _origin,
-    _oracleData
-    ,
+                    _amount,
+                    _origin,
+                    _oracleData
+                    ,
                     estimateGasFactor,
                 ),
             );
             const txHash = await self._web3Wrapper.sendTransactionAsync(txDataWithDefaults);
             const receipt = self._web3Wrapper.awaitTransactionSuccessAsync(txHash);
-    
+
             return new Response(txHash, receipt);
         },
         async estimateGasAsync(
@@ -1915,11 +1946,11 @@ export class DebtEngineContract extends BaseContract {
         ): Promise<number> {
             const self = this as any as DebtEngineContract;
             const encodedData = self._strictEncodeArguments('pay(bytes32,uint256,address,bytes)',
-            [_id,
-    _amount,
-    _origin,
-    _oracleData
-    ]);
+                [_id,
+                    _amount,
+                    _origin,
+                    _oracleData
+                ]);
             const contractDefaults = self._web3Wrapper.getContractDefaults();
             const defaultFromAddress = (await self._web3Wrapper.getAvailableAddressesAsync())[0];
             const txDataWithDefaults = await BaseContract._applyDefaultsToTxDataAsync(
@@ -1947,11 +1978,11 @@ export class DebtEngineContract extends BaseContract {
         ): string {
             const self = this as any as DebtEngineContract;
             const abiEncodedTransactionData = self._strictEncodeArguments('pay(bytes32,uint256,address,bytes)',
-            [_id,
-    _amount,
-    _origin,
-    _oracleData
-    ]);
+                [_id,
+                    _amount,
+                    _origin,
+                    _oracleData
+                ]);
             return abiEncodedTransactionData;
         },
         async callAsync(
@@ -1959,33 +1990,34 @@ export class DebtEngineContract extends BaseContract {
             _amount: BigNumber,
             _origin: string,
             _oracleData: string,
-        callData: Partial<CallData> = {},
+            callData: Partial<CallData> = {},
             defaultBlock?: BlockParam,
         ): Promise<[BigNumber, BigNumber]
         > {
             const self = this as any as DebtEngineContract;
             const encodedData = self._strictEncodeArguments('pay(bytes32,uint256,address,bytes)', [_id,
-        _amount,
-        _origin,
-        _oracleData
-        ]);
+                _amount,
+                _origin,
+                _oracleData
+            ]);
             const callDataWithDefaults = await BaseContract._applyDefaultsToTxDataAsync(
-            {
-            to: self.address,
-            ...callData,
-            data: encodedData,
-            },
-            self._web3Wrapper.getContractDefaults(),
+                {
+                    to: self.address,
+                    ...callData,
+                    data: encodedData,
+                },
+                self._web3Wrapper.getContractDefaults(),
             );
             const rawCallResult = await self._web3Wrapper.callAsync(callDataWithDefaults, defaultBlock);
             BaseContract._throwIfRevertWithReasonCallResult(rawCallResult);
             const abiEncoder = self._lookupAbiEncoder('pay(bytes32,uint256,address,bytes)');
             // tslint:disable boolean-naming
             const result = abiEncoder.strictDecodeReturnValue<[BigNumber, BigNumber]
-        >(rawCallResult);
+                >(rawCallResult);
             // tslint:enable boolean-naming
             return result;
-        },};
+        },
+    };
     public payToken = {
         async sendTransactionAsync(
             id: string,
@@ -1997,10 +2029,10 @@ export class DebtEngineContract extends BaseContract {
         ): Promise<Response> {
             const self = this as any as DebtEngineContract;
             const encodedData = self._strictEncodeArguments('payToken(bytes32,uint256,address,bytes)', [id,
-    amount,
-    origin,
-    oracleData
-    ]);
+                amount,
+                origin,
+                oracleData
+            ]);
             const contractDefaults = self._web3Wrapper.getContractDefaults();
             const defaultFromAddress = (await self._web3Wrapper.getAvailableAddressesAsync())[0];
             const txDataWithDefaults = await BaseContract._applyDefaultsToTxDataAsync(
@@ -2016,16 +2048,16 @@ export class DebtEngineContract extends BaseContract {
                 self.payToken.estimateGasAsync.bind<DebtEngineContract, any, Promise<number>>(
                     self,
                     id,
-    amount,
-    origin,
-    oracleData
-    ,
+                    amount,
+                    origin,
+                    oracleData
+                    ,
                     estimateGasFactor,
                 ),
             );
             const txHash = await self._web3Wrapper.sendTransactionAsync(txDataWithDefaults);
             const receipt = self._web3Wrapper.awaitTransactionSuccessAsync(txHash);
-    
+
             return new Response(txHash, receipt);
         },
         async estimateGasAsync(
@@ -2038,11 +2070,11 @@ export class DebtEngineContract extends BaseContract {
         ): Promise<number> {
             const self = this as any as DebtEngineContract;
             const encodedData = self._strictEncodeArguments('payToken(bytes32,uint256,address,bytes)',
-            [id,
-    amount,
-    origin,
-    oracleData
-    ]);
+                [id,
+                    amount,
+                    origin,
+                    oracleData
+                ]);
             const contractDefaults = self._web3Wrapper.getContractDefaults();
             const defaultFromAddress = (await self._web3Wrapper.getAvailableAddressesAsync())[0];
             const txDataWithDefaults = await BaseContract._applyDefaultsToTxDataAsync(
@@ -2070,11 +2102,11 @@ export class DebtEngineContract extends BaseContract {
         ): string {
             const self = this as any as DebtEngineContract;
             const abiEncodedTransactionData = self._strictEncodeArguments('payToken(bytes32,uint256,address,bytes)',
-            [id,
-    amount,
-    origin,
-    oracleData
-    ]);
+                [id,
+                    amount,
+                    origin,
+                    oracleData
+                ]);
             return abiEncodedTransactionData;
         },
         async callAsync(
@@ -2082,33 +2114,34 @@ export class DebtEngineContract extends BaseContract {
             amount: BigNumber,
             origin: string,
             oracleData: string,
-        callData: Partial<CallData> = {},
+            callData: Partial<CallData> = {},
             defaultBlock?: BlockParam,
         ): Promise<[BigNumber, BigNumber]
         > {
             const self = this as any as DebtEngineContract;
             const encodedData = self._strictEncodeArguments('payToken(bytes32,uint256,address,bytes)', [id,
-        amount,
-        origin,
-        oracleData
-        ]);
+                amount,
+                origin,
+                oracleData
+            ]);
             const callDataWithDefaults = await BaseContract._applyDefaultsToTxDataAsync(
-            {
-            to: self.address,
-            ...callData,
-            data: encodedData,
-            },
-            self._web3Wrapper.getContractDefaults(),
+                {
+                    to: self.address,
+                    ...callData,
+                    data: encodedData,
+                },
+                self._web3Wrapper.getContractDefaults(),
             );
             const rawCallResult = await self._web3Wrapper.callAsync(callDataWithDefaults, defaultBlock);
             BaseContract._throwIfRevertWithReasonCallResult(rawCallResult);
             const abiEncoder = self._lookupAbiEncoder('payToken(bytes32,uint256,address,bytes)');
             // tslint:disable boolean-naming
             const result = abiEncoder.strictDecodeReturnValue<[BigNumber, BigNumber]
-        >(rawCallResult);
+                >(rawCallResult);
             // tslint:enable boolean-naming
             return result;
-        },};
+        },
+    };
     public payBatch = {
         async sendTransactionAsync(
             _ids: string[],
@@ -2121,11 +2154,11 @@ export class DebtEngineContract extends BaseContract {
         ): Promise<Response> {
             const self = this as any as DebtEngineContract;
             const encodedData = self._strictEncodeArguments('payBatch(bytes32[],uint256[],address,address,bytes)', [_ids,
-    _amounts,
-    _origin,
-    _oracle,
-    _oracleData
-    ]);
+                _amounts,
+                _origin,
+                _oracle,
+                _oracleData
+            ]);
             const contractDefaults = self._web3Wrapper.getContractDefaults();
             const defaultFromAddress = (await self._web3Wrapper.getAvailableAddressesAsync())[0];
             const txDataWithDefaults = await BaseContract._applyDefaultsToTxDataAsync(
@@ -2141,17 +2174,17 @@ export class DebtEngineContract extends BaseContract {
                 self.payBatch.estimateGasAsync.bind<DebtEngineContract, any, Promise<number>>(
                     self,
                     _ids,
-    _amounts,
-    _origin,
-    _oracle,
-    _oracleData
-    ,
+                    _amounts,
+                    _origin,
+                    _oracle,
+                    _oracleData
+                    ,
                     estimateGasFactor,
                 ),
             );
             const txHash = await self._web3Wrapper.sendTransactionAsync(txDataWithDefaults);
             const receipt = self._web3Wrapper.awaitTransactionSuccessAsync(txHash);
-    
+
             return new Response(txHash, receipt);
         },
         async estimateGasAsync(
@@ -2165,12 +2198,12 @@ export class DebtEngineContract extends BaseContract {
         ): Promise<number> {
             const self = this as any as DebtEngineContract;
             const encodedData = self._strictEncodeArguments('payBatch(bytes32[],uint256[],address,address,bytes)',
-            [_ids,
-    _amounts,
-    _origin,
-    _oracle,
-    _oracleData
-    ]);
+                [_ids,
+                    _amounts,
+                    _origin,
+                    _oracle,
+                    _oracleData
+                ]);
             const contractDefaults = self._web3Wrapper.getContractDefaults();
             const defaultFromAddress = (await self._web3Wrapper.getAvailableAddressesAsync())[0];
             const txDataWithDefaults = await BaseContract._applyDefaultsToTxDataAsync(
@@ -2199,12 +2232,12 @@ export class DebtEngineContract extends BaseContract {
         ): string {
             const self = this as any as DebtEngineContract;
             const abiEncodedTransactionData = self._strictEncodeArguments('payBatch(bytes32[],uint256[],address,address,bytes)',
-            [_ids,
-    _amounts,
-    _origin,
-    _oracle,
-    _oracleData
-    ]);
+                [_ids,
+                    _amounts,
+                    _origin,
+                    _oracle,
+                    _oracleData
+                ]);
             return abiEncodedTransactionData;
         },
         async callAsync(
@@ -2213,34 +2246,35 @@ export class DebtEngineContract extends BaseContract {
             _origin: string,
             _oracle: string,
             _oracleData: string,
-        callData: Partial<CallData> = {},
+            callData: Partial<CallData> = {},
             defaultBlock?: BlockParam,
         ): Promise<[BigNumber[], BigNumber[]]
         > {
             const self = this as any as DebtEngineContract;
             const encodedData = self._strictEncodeArguments('payBatch(bytes32[],uint256[],address,address,bytes)', [_ids,
-        _amounts,
-        _origin,
-        _oracle,
-        _oracleData
-        ]);
+                _amounts,
+                _origin,
+                _oracle,
+                _oracleData
+            ]);
             const callDataWithDefaults = await BaseContract._applyDefaultsToTxDataAsync(
-            {
-            to: self.address,
-            ...callData,
-            data: encodedData,
-            },
-            self._web3Wrapper.getContractDefaults(),
+                {
+                    to: self.address,
+                    ...callData,
+                    data: encodedData,
+                },
+                self._web3Wrapper.getContractDefaults(),
             );
             const rawCallResult = await self._web3Wrapper.callAsync(callDataWithDefaults, defaultBlock);
             BaseContract._throwIfRevertWithReasonCallResult(rawCallResult);
             const abiEncoder = self._lookupAbiEncoder('payBatch(bytes32[],uint256[],address,address,bytes)');
             // tslint:disable boolean-naming
             const result = abiEncoder.strictDecodeReturnValue<[BigNumber[], BigNumber[]]
-        >(rawCallResult);
+                >(rawCallResult);
             // tslint:enable boolean-naming
             return result;
-        },};
+        },
+    };
     public payTokenBatch = {
         async sendTransactionAsync(
             _ids: string[],
@@ -2253,11 +2287,11 @@ export class DebtEngineContract extends BaseContract {
         ): Promise<Response> {
             const self = this as any as DebtEngineContract;
             const encodedData = self._strictEncodeArguments('payTokenBatch(bytes32[],uint256[],address,address,bytes)', [_ids,
-    _tokenAmounts,
-    _origin,
-    _oracle,
-    _oracleData
-    ]);
+                _tokenAmounts,
+                _origin,
+                _oracle,
+                _oracleData
+            ]);
             const contractDefaults = self._web3Wrapper.getContractDefaults();
             const defaultFromAddress = (await self._web3Wrapper.getAvailableAddressesAsync())[0];
             const txDataWithDefaults = await BaseContract._applyDefaultsToTxDataAsync(
@@ -2273,17 +2307,17 @@ export class DebtEngineContract extends BaseContract {
                 self.payTokenBatch.estimateGasAsync.bind<DebtEngineContract, any, Promise<number>>(
                     self,
                     _ids,
-    _tokenAmounts,
-    _origin,
-    _oracle,
-    _oracleData
-    ,
+                    _tokenAmounts,
+                    _origin,
+                    _oracle,
+                    _oracleData
+                    ,
                     estimateGasFactor,
                 ),
             );
             const txHash = await self._web3Wrapper.sendTransactionAsync(txDataWithDefaults);
             const receipt = self._web3Wrapper.awaitTransactionSuccessAsync(txHash);
-    
+
             return new Response(txHash, receipt);
         },
         async estimateGasAsync(
@@ -2297,12 +2331,12 @@ export class DebtEngineContract extends BaseContract {
         ): Promise<number> {
             const self = this as any as DebtEngineContract;
             const encodedData = self._strictEncodeArguments('payTokenBatch(bytes32[],uint256[],address,address,bytes)',
-            [_ids,
-    _tokenAmounts,
-    _origin,
-    _oracle,
-    _oracleData
-    ]);
+                [_ids,
+                    _tokenAmounts,
+                    _origin,
+                    _oracle,
+                    _oracleData
+                ]);
             const contractDefaults = self._web3Wrapper.getContractDefaults();
             const defaultFromAddress = (await self._web3Wrapper.getAvailableAddressesAsync())[0];
             const txDataWithDefaults = await BaseContract._applyDefaultsToTxDataAsync(
@@ -2331,12 +2365,12 @@ export class DebtEngineContract extends BaseContract {
         ): string {
             const self = this as any as DebtEngineContract;
             const abiEncodedTransactionData = self._strictEncodeArguments('payTokenBatch(bytes32[],uint256[],address,address,bytes)',
-            [_ids,
-    _tokenAmounts,
-    _origin,
-    _oracle,
-    _oracleData
-    ]);
+                [_ids,
+                    _tokenAmounts,
+                    _origin,
+                    _oracle,
+                    _oracleData
+                ]);
             return abiEncodedTransactionData;
         },
         async callAsync(
@@ -2345,34 +2379,35 @@ export class DebtEngineContract extends BaseContract {
             _origin: string,
             _oracle: string,
             _oracleData: string,
-        callData: Partial<CallData> = {},
+            callData: Partial<CallData> = {},
             defaultBlock?: BlockParam,
         ): Promise<[BigNumber[], BigNumber[]]
         > {
             const self = this as any as DebtEngineContract;
             const encodedData = self._strictEncodeArguments('payTokenBatch(bytes32[],uint256[],address,address,bytes)', [_ids,
-        _tokenAmounts,
-        _origin,
-        _oracle,
-        _oracleData
-        ]);
+                _tokenAmounts,
+                _origin,
+                _oracle,
+                _oracleData
+            ]);
             const callDataWithDefaults = await BaseContract._applyDefaultsToTxDataAsync(
-            {
-            to: self.address,
-            ...callData,
-            data: encodedData,
-            },
-            self._web3Wrapper.getContractDefaults(),
+                {
+                    to: self.address,
+                    ...callData,
+                    data: encodedData,
+                },
+                self._web3Wrapper.getContractDefaults(),
             );
             const rawCallResult = await self._web3Wrapper.callAsync(callDataWithDefaults, defaultBlock);
             BaseContract._throwIfRevertWithReasonCallResult(rawCallResult);
             const abiEncoder = self._lookupAbiEncoder('payTokenBatch(bytes32[],uint256[],address,address,bytes)');
             // tslint:disable boolean-naming
             const result = abiEncoder.strictDecodeReturnValue<[BigNumber[], BigNumber[]]
-        >(rawCallResult);
+                >(rawCallResult);
             // tslint:enable boolean-naming
             return result;
-        },};
+        },
+    };
     public run = {
         async sendTransactionAsync(
             _id: string,
@@ -2381,7 +2416,7 @@ export class DebtEngineContract extends BaseContract {
         ): Promise<Response> {
             const self = this as any as DebtEngineContract;
             const encodedData = self._strictEncodeArguments('run(bytes32)', [_id
-    ]);
+            ]);
             const contractDefaults = self._web3Wrapper.getContractDefaults();
             const defaultFromAddress = (await self._web3Wrapper.getAvailableAddressesAsync())[0];
             const txDataWithDefaults = await BaseContract._applyDefaultsToTxDataAsync(
@@ -2397,13 +2432,13 @@ export class DebtEngineContract extends BaseContract {
                 self.run.estimateGasAsync.bind<DebtEngineContract, any, Promise<number>>(
                     self,
                     _id
-    ,
+                    ,
                     estimateGasFactor,
                 ),
             );
             const txHash = await self._web3Wrapper.sendTransactionAsync(txDataWithDefaults);
             const receipt = self._web3Wrapper.awaitTransactionSuccessAsync(txHash);
-    
+
             return new Response(txHash, receipt);
         },
         async estimateGasAsync(
@@ -2413,8 +2448,8 @@ export class DebtEngineContract extends BaseContract {
         ): Promise<number> {
             const self = this as any as DebtEngineContract;
             const encodedData = self._strictEncodeArguments('run(bytes32)',
-            [_id
-    ]);
+                [_id
+                ]);
             const contractDefaults = self._web3Wrapper.getContractDefaults();
             const defaultFromAddress = (await self._web3Wrapper.getAvailableAddressesAsync())[0];
             const txDataWithDefaults = await BaseContract._applyDefaultsToTxDataAsync(
@@ -2439,36 +2474,37 @@ export class DebtEngineContract extends BaseContract {
         ): string {
             const self = this as any as DebtEngineContract;
             const abiEncodedTransactionData = self._strictEncodeArguments('run(bytes32)',
-            [_id
-    ]);
+                [_id
+                ]);
             return abiEncodedTransactionData;
         },
         async callAsync(
             _id: string,
-        callData: Partial<CallData> = {},
+            callData: Partial<CallData> = {},
             defaultBlock?: BlockParam,
         ): Promise<boolean
         > {
             const self = this as any as DebtEngineContract;
             const encodedData = self._strictEncodeArguments('run(bytes32)', [_id
-        ]);
+            ]);
             const callDataWithDefaults = await BaseContract._applyDefaultsToTxDataAsync(
-            {
-            to: self.address,
-            ...callData,
-            data: encodedData,
-            },
-            self._web3Wrapper.getContractDefaults(),
+                {
+                    to: self.address,
+                    ...callData,
+                    data: encodedData,
+                },
+                self._web3Wrapper.getContractDefaults(),
             );
             const rawCallResult = await self._web3Wrapper.callAsync(callDataWithDefaults, defaultBlock);
             BaseContract._throwIfRevertWithReasonCallResult(rawCallResult);
             const abiEncoder = self._lookupAbiEncoder('run(bytes32)');
             // tslint:disable boolean-naming
             const result = abiEncoder.strictDecodeReturnValue<boolean
-        >(rawCallResult);
+                >(rawCallResult);
             // tslint:enable boolean-naming
             return result;
-        },};
+        },
+    };
     public withdraw = {
         async sendTransactionAsync(
             _id: string,
@@ -2478,8 +2514,8 @@ export class DebtEngineContract extends BaseContract {
         ): Promise<Response> {
             const self = this as any as DebtEngineContract;
             const encodedData = self._strictEncodeArguments('withdraw(bytes32,address)', [_id,
-    _to
-    ]);
+                _to
+            ]);
             const contractDefaults = self._web3Wrapper.getContractDefaults();
             const defaultFromAddress = (await self._web3Wrapper.getAvailableAddressesAsync())[0];
             const txDataWithDefaults = await BaseContract._applyDefaultsToTxDataAsync(
@@ -2495,14 +2531,14 @@ export class DebtEngineContract extends BaseContract {
                 self.withdraw.estimateGasAsync.bind<DebtEngineContract, any, Promise<number>>(
                     self,
                     _id,
-    _to
-    ,
+                    _to
+                    ,
                     estimateGasFactor,
                 ),
             );
             const txHash = await self._web3Wrapper.sendTransactionAsync(txDataWithDefaults);
             const receipt = self._web3Wrapper.awaitTransactionSuccessAsync(txHash);
-    
+
             return new Response(txHash, receipt);
         },
         async estimateGasAsync(
@@ -2513,9 +2549,9 @@ export class DebtEngineContract extends BaseContract {
         ): Promise<number> {
             const self = this as any as DebtEngineContract;
             const encodedData = self._strictEncodeArguments('withdraw(bytes32,address)',
-            [_id,
-    _to
-    ]);
+                [_id,
+                    _to
+                ]);
             const contractDefaults = self._web3Wrapper.getContractDefaults();
             const defaultFromAddress = (await self._web3Wrapper.getAvailableAddressesAsync())[0];
             const txDataWithDefaults = await BaseContract._applyDefaultsToTxDataAsync(
@@ -2541,39 +2577,40 @@ export class DebtEngineContract extends BaseContract {
         ): string {
             const self = this as any as DebtEngineContract;
             const abiEncodedTransactionData = self._strictEncodeArguments('withdraw(bytes32,address)',
-            [_id,
-    _to
-    ]);
+                [_id,
+                    _to
+                ]);
             return abiEncodedTransactionData;
         },
         async callAsync(
             _id: string,
             _to: string,
-        callData: Partial<CallData> = {},
+            callData: Partial<CallData> = {},
             defaultBlock?: BlockParam,
         ): Promise<BigNumber
         > {
             const self = this as any as DebtEngineContract;
             const encodedData = self._strictEncodeArguments('withdraw(bytes32,address)', [_id,
-        _to
-        ]);
+                _to
+            ]);
             const callDataWithDefaults = await BaseContract._applyDefaultsToTxDataAsync(
-            {
-            to: self.address,
-            ...callData,
-            data: encodedData,
-            },
-            self._web3Wrapper.getContractDefaults(),
+                {
+                    to: self.address,
+                    ...callData,
+                    data: encodedData,
+                },
+                self._web3Wrapper.getContractDefaults(),
             );
             const rawCallResult = await self._web3Wrapper.callAsync(callDataWithDefaults, defaultBlock);
             BaseContract._throwIfRevertWithReasonCallResult(rawCallResult);
             const abiEncoder = self._lookupAbiEncoder('withdraw(bytes32,address)');
             // tslint:disable boolean-naming
             const result = abiEncoder.strictDecodeReturnValue<BigNumber
-        >(rawCallResult);
+                >(rawCallResult);
             // tslint:enable boolean-naming
             return result;
-        },};
+        },
+    };
     public withdrawPartial = {
         async sendTransactionAsync(
             _id: string,
@@ -2584,9 +2621,9 @@ export class DebtEngineContract extends BaseContract {
         ): Promise<Response> {
             const self = this as any as DebtEngineContract;
             const encodedData = self._strictEncodeArguments('withdrawPartial(bytes32,address,uint256)', [_id,
-    _to,
-    _amount
-    ]);
+                _to,
+                _amount
+            ]);
             const contractDefaults = self._web3Wrapper.getContractDefaults();
             const defaultFromAddress = (await self._web3Wrapper.getAvailableAddressesAsync())[0];
             const txDataWithDefaults = await BaseContract._applyDefaultsToTxDataAsync(
@@ -2602,15 +2639,15 @@ export class DebtEngineContract extends BaseContract {
                 self.withdrawPartial.estimateGasAsync.bind<DebtEngineContract, any, Promise<number>>(
                     self,
                     _id,
-    _to,
-    _amount
-    ,
+                    _to,
+                    _amount
+                    ,
                     estimateGasFactor,
                 ),
             );
             const txHash = await self._web3Wrapper.sendTransactionAsync(txDataWithDefaults);
             const receipt = self._web3Wrapper.awaitTransactionSuccessAsync(txHash);
-    
+
             return new Response(txHash, receipt);
         },
         async estimateGasAsync(
@@ -2622,10 +2659,10 @@ export class DebtEngineContract extends BaseContract {
         ): Promise<number> {
             const self = this as any as DebtEngineContract;
             const encodedData = self._strictEncodeArguments('withdrawPartial(bytes32,address,uint256)',
-            [_id,
-    _to,
-    _amount
-    ]);
+                [_id,
+                    _to,
+                    _amount
+                ]);
             const contractDefaults = self._web3Wrapper.getContractDefaults();
             const defaultFromAddress = (await self._web3Wrapper.getAvailableAddressesAsync())[0];
             const txDataWithDefaults = await BaseContract._applyDefaultsToTxDataAsync(
@@ -2652,42 +2689,43 @@ export class DebtEngineContract extends BaseContract {
         ): string {
             const self = this as any as DebtEngineContract;
             const abiEncodedTransactionData = self._strictEncodeArguments('withdrawPartial(bytes32,address,uint256)',
-            [_id,
-    _to,
-    _amount
-    ]);
+                [_id,
+                    _to,
+                    _amount
+                ]);
             return abiEncodedTransactionData;
         },
         async callAsync(
             _id: string,
             _to: string,
             _amount: BigNumber,
-        callData: Partial<CallData> = {},
+            callData: Partial<CallData> = {},
             defaultBlock?: BlockParam,
         ): Promise<boolean
         > {
             const self = this as any as DebtEngineContract;
             const encodedData = self._strictEncodeArguments('withdrawPartial(bytes32,address,uint256)', [_id,
-        _to,
-        _amount
-        ]);
+                _to,
+                _amount
+            ]);
             const callDataWithDefaults = await BaseContract._applyDefaultsToTxDataAsync(
-            {
-            to: self.address,
-            ...callData,
-            data: encodedData,
-            },
-            self._web3Wrapper.getContractDefaults(),
+                {
+                    to: self.address,
+                    ...callData,
+                    data: encodedData,
+                },
+                self._web3Wrapper.getContractDefaults(),
             );
             const rawCallResult = await self._web3Wrapper.callAsync(callDataWithDefaults, defaultBlock);
             BaseContract._throwIfRevertWithReasonCallResult(rawCallResult);
             const abiEncoder = self._lookupAbiEncoder('withdrawPartial(bytes32,address,uint256)');
             // tslint:disable boolean-naming
             const result = abiEncoder.strictDecodeReturnValue<boolean
-        >(rawCallResult);
+                >(rawCallResult);
             // tslint:enable boolean-naming
             return result;
-        },};
+        },
+    };
     public withdrawBatch = {
         async sendTransactionAsync(
             _ids: string[],
@@ -2697,8 +2735,8 @@ export class DebtEngineContract extends BaseContract {
         ): Promise<Response> {
             const self = this as any as DebtEngineContract;
             const encodedData = self._strictEncodeArguments('withdrawBatch(bytes32[],address)', [_ids,
-    _to
-    ]);
+                _to
+            ]);
             const contractDefaults = self._web3Wrapper.getContractDefaults();
             const defaultFromAddress = (await self._web3Wrapper.getAvailableAddressesAsync())[0];
             const txDataWithDefaults = await BaseContract._applyDefaultsToTxDataAsync(
@@ -2714,14 +2752,14 @@ export class DebtEngineContract extends BaseContract {
                 self.withdrawBatch.estimateGasAsync.bind<DebtEngineContract, any, Promise<number>>(
                     self,
                     _ids,
-    _to
-    ,
+                    _to
+                    ,
                     estimateGasFactor,
                 ),
             );
             const txHash = await self._web3Wrapper.sendTransactionAsync(txDataWithDefaults);
             const receipt = self._web3Wrapper.awaitTransactionSuccessAsync(txHash);
-    
+
             return new Response(txHash, receipt);
         },
         async estimateGasAsync(
@@ -2732,9 +2770,9 @@ export class DebtEngineContract extends BaseContract {
         ): Promise<number> {
             const self = this as any as DebtEngineContract;
             const encodedData = self._strictEncodeArguments('withdrawBatch(bytes32[],address)',
-            [_ids,
-    _to
-    ]);
+                [_ids,
+                    _to
+                ]);
             const contractDefaults = self._web3Wrapper.getContractDefaults();
             const defaultFromAddress = (await self._web3Wrapper.getAvailableAddressesAsync())[0];
             const txDataWithDefaults = await BaseContract._applyDefaultsToTxDataAsync(
@@ -2760,89 +2798,91 @@ export class DebtEngineContract extends BaseContract {
         ): string {
             const self = this as any as DebtEngineContract;
             const abiEncodedTransactionData = self._strictEncodeArguments('withdrawBatch(bytes32[],address)',
-            [_ids,
-    _to
-    ]);
+                [_ids,
+                    _to
+                ]);
             return abiEncodedTransactionData;
         },
         async callAsync(
             _ids: string[],
             _to: string,
-        callData: Partial<CallData> = {},
+            callData: Partial<CallData> = {},
             defaultBlock?: BlockParam,
         ): Promise<BigNumber
         > {
             const self = this as any as DebtEngineContract;
             const encodedData = self._strictEncodeArguments('withdrawBatch(bytes32[],address)', [_ids,
-        _to
-        ]);
+                _to
+            ]);
             const callDataWithDefaults = await BaseContract._applyDefaultsToTxDataAsync(
-            {
-            to: self.address,
-            ...callData,
-            data: encodedData,
-            },
-            self._web3Wrapper.getContractDefaults(),
+                {
+                    to: self.address,
+                    ...callData,
+                    data: encodedData,
+                },
+                self._web3Wrapper.getContractDefaults(),
             );
             const rawCallResult = await self._web3Wrapper.callAsync(callDataWithDefaults, defaultBlock);
             BaseContract._throwIfRevertWithReasonCallResult(rawCallResult);
             const abiEncoder = self._lookupAbiEncoder('withdrawBatch(bytes32[],address)');
             // tslint:disable boolean-naming
             const result = abiEncoder.strictDecodeReturnValue<BigNumber
-        >(rawCallResult);
+                >(rawCallResult);
             // tslint:enable boolean-naming
             return result;
-        },};
+        },
+    };
     public getStatus = {
         async callAsync(
             _id: string,
-        callData: Partial<CallData> = {},
+            callData: Partial<CallData> = {},
             defaultBlock?: BlockParam,
         ): Promise<BigNumber
         > {
             const self = this as any as DebtEngineContract;
             const encodedData = self._strictEncodeArguments('getStatus(bytes32)', [_id
-        ]);
+            ]);
             const callDataWithDefaults = await BaseContract._applyDefaultsToTxDataAsync(
-            {
-            to: self.address,
-            ...callData,
-            data: encodedData,
-            },
-            self._web3Wrapper.getContractDefaults(),
+                {
+                    to: self.address,
+                    ...callData,
+                    data: encodedData,
+                },
+                self._web3Wrapper.getContractDefaults(),
             );
             const rawCallResult = await self._web3Wrapper.callAsync(callDataWithDefaults, defaultBlock);
             BaseContract._throwIfRevertWithReasonCallResult(rawCallResult);
             const abiEncoder = self._lookupAbiEncoder('getStatus(bytes32)');
             // tslint:disable boolean-naming
             const result = abiEncoder.strictDecodeReturnValue<BigNumber
-        >(rawCallResult);
+                >(rawCallResult);
             // tslint:enable boolean-naming
             return result;
-        },};
+        },
+    };
     public static async deployAsync(
         bytecode: string,
         abi: ContractAbi,
         supportedProvider: SupportedProvider,
         txDefaults: Partial<TxData>,
-            _token: string,
+        _token: string,
     ): Promise<DebtEngineContract> {
         const provider = providerUtils.standardizeOrThrow(supportedProvider);
         const constructorAbi = BaseContract._lookupConstructorAbi(abi);
         [_token
-] = BaseContract._formatABIDataItemList(
+        ] = BaseContract._formatABIDataItemList(
             constructorAbi.inputs,
             [_token
-],
+            ],
             BaseContract._bigNumberToString,
         );
         const iface = new ethers.utils.Interface(abi);
         const deployInfo = iface.deployFunction;
         const txData = deployInfo.encode(bytecode, [_token
-]);
+        ]);
         const web3Wrapper = new Web3Wrapper(provider);
         const txDataWithDefaults = await BaseContract._applyDefaultsToTxDataAsync(
-            {data: txData},
+            { data: txData },
             txDefaults,
             web3Wrapper.estimateGasAsync.bind(web3Wrapper),
         );
@@ -2852,7 +2892,7 @@ export class DebtEngineContract extends BaseContract {
         logUtils.log(`DebtEngine successfully deployed at ${txReceipt.contractAddress}`);
         const contractInstance = new DebtEngineContract(abi, txReceipt.contractAddress as string, provider, txDefaults);
         contractInstance.constructorArgs = [_token
-];
+        ];
         return contractInstance;
     }
     constructor(abi: ContractAbi, address: string, supportedProvider: SupportedProvider, txDefaults?: Partial<TxData>, defaultEstimateGasFactor?: number) {

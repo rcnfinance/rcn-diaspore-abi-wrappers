@@ -54,379 +54,393 @@ export class ERC721BaseContract extends BaseContract {
     public supportsInterface = {
         async callAsync(
             interfaceId: string,
-        callData: Partial<CallData> = {},
+            callData: Partial<CallData> = {},
             defaultBlock?: BlockParam,
         ): Promise<boolean
         > {
             const self = this as any as ERC721BaseContract;
             const encodedData = self._strictEncodeArguments('supportsInterface(bytes4)', [interfaceId
-        ]);
+            ]);
             const callDataWithDefaults = await BaseContract._applyDefaultsToTxDataAsync(
-            {
-            to: self.address,
-            ...callData,
-            data: encodedData,
-            },
-            self._web3Wrapper.getContractDefaults(),
+                {
+                    to: self.address,
+                    ...callData,
+                    data: encodedData,
+                },
+                self._web3Wrapper.getContractDefaults(),
             );
             const rawCallResult = await self._web3Wrapper.callAsync(callDataWithDefaults, defaultBlock);
             BaseContract._throwIfRevertWithReasonCallResult(rawCallResult);
             const abiEncoder = self._lookupAbiEncoder('supportsInterface(bytes4)');
             // tslint:disable boolean-naming
             const result = abiEncoder.strictDecodeReturnValue<boolean
-        >(rawCallResult);
+                >(rawCallResult);
             // tslint:enable boolean-naming
             return result;
-        },};
+        },
+    };
     public name = {
         async callAsync(
-        callData: Partial<CallData> = {},
+            callData: Partial<CallData> = {},
             defaultBlock?: BlockParam,
         ): Promise<string
         > {
             const self = this as any as ERC721BaseContract;
             const encodedData = self._strictEncodeArguments('name()', []);
             const callDataWithDefaults = await BaseContract._applyDefaultsToTxDataAsync(
-            {
-            to: self.address,
-            ...callData,
-            data: encodedData,
-            },
-            self._web3Wrapper.getContractDefaults(),
+                {
+                    to: self.address,
+                    ...callData,
+                    data: encodedData,
+                },
+                self._web3Wrapper.getContractDefaults(),
             );
             const rawCallResult = await self._web3Wrapper.callAsync(callDataWithDefaults, defaultBlock);
             BaseContract._throwIfRevertWithReasonCallResult(rawCallResult);
             const abiEncoder = self._lookupAbiEncoder('name()');
             // tslint:disable boolean-naming
             const result = abiEncoder.strictDecodeReturnValue<string
-        >(rawCallResult);
+                >(rawCallResult);
             // tslint:enable boolean-naming
             return result;
-        },};
+        },
+    };
     public symbol = {
         async callAsync(
-        callData: Partial<CallData> = {},
+            callData: Partial<CallData> = {},
             defaultBlock?: BlockParam,
         ): Promise<string
         > {
             const self = this as any as ERC721BaseContract;
             const encodedData = self._strictEncodeArguments('symbol()', []);
             const callDataWithDefaults = await BaseContract._applyDefaultsToTxDataAsync(
-            {
-            to: self.address,
-            ...callData,
-            data: encodedData,
-            },
-            self._web3Wrapper.getContractDefaults(),
+                {
+                    to: self.address,
+                    ...callData,
+                    data: encodedData,
+                },
+                self._web3Wrapper.getContractDefaults(),
             );
             const rawCallResult = await self._web3Wrapper.callAsync(callDataWithDefaults, defaultBlock);
             BaseContract._throwIfRevertWithReasonCallResult(rawCallResult);
             const abiEncoder = self._lookupAbiEncoder('symbol()');
             // tslint:disable boolean-naming
             const result = abiEncoder.strictDecodeReturnValue<string
-        >(rawCallResult);
+                >(rawCallResult);
             // tslint:enable boolean-naming
             return result;
-        },};
+        },
+    };
     public tokenURI = {
         async callAsync(
             _tokenId: BigNumber,
-        callData: Partial<CallData> = {},
+            callData: Partial<CallData> = {},
             defaultBlock?: BlockParam,
         ): Promise<string
         > {
             const self = this as any as ERC721BaseContract;
             const encodedData = self._strictEncodeArguments('tokenURI(uint256)', [_tokenId
-        ]);
+            ]);
             const callDataWithDefaults = await BaseContract._applyDefaultsToTxDataAsync(
-            {
-            to: self.address,
-            ...callData,
-            data: encodedData,
-            },
-            self._web3Wrapper.getContractDefaults(),
+                {
+                    to: self.address,
+                    ...callData,
+                    data: encodedData,
+                },
+                self._web3Wrapper.getContractDefaults(),
             );
             const rawCallResult = await self._web3Wrapper.callAsync(callDataWithDefaults, defaultBlock);
             BaseContract._throwIfRevertWithReasonCallResult(rawCallResult);
             const abiEncoder = self._lookupAbiEncoder('tokenURI(uint256)');
             // tslint:disable boolean-naming
             const result = abiEncoder.strictDecodeReturnValue<string
-        >(rawCallResult);
+                >(rawCallResult);
             // tslint:enable boolean-naming
             return result;
-        },};
+        },
+    };
     public allTokens = {
         async callAsync(
-        callData: Partial<CallData> = {},
+            callData: Partial<CallData> = {},
             defaultBlock?: BlockParam,
         ): Promise<BigNumber[]
         > {
             const self = this as any as ERC721BaseContract;
             const encodedData = self._strictEncodeArguments('allTokens()', []);
             const callDataWithDefaults = await BaseContract._applyDefaultsToTxDataAsync(
-            {
-            to: self.address,
-            ...callData,
-            data: encodedData,
-            },
-            self._web3Wrapper.getContractDefaults(),
+                {
+                    to: self.address,
+                    ...callData,
+                    data: encodedData,
+                },
+                self._web3Wrapper.getContractDefaults(),
             );
             const rawCallResult = await self._web3Wrapper.callAsync(callDataWithDefaults, defaultBlock);
             BaseContract._throwIfRevertWithReasonCallResult(rawCallResult);
             const abiEncoder = self._lookupAbiEncoder('allTokens()');
             // tslint:disable boolean-naming
             const result = abiEncoder.strictDecodeReturnValue<BigNumber[]
-        >(rawCallResult);
+                >(rawCallResult);
             // tslint:enable boolean-naming
             return result;
-        },};
+        },
+    };
     public assetsOf = {
         async callAsync(
             _owner: string,
-        callData: Partial<CallData> = {},
+            callData: Partial<CallData> = {},
             defaultBlock?: BlockParam,
         ): Promise<BigNumber[]
         > {
             const self = this as any as ERC721BaseContract;
             const encodedData = self._strictEncodeArguments('assetsOf(address)', [_owner
-        ]);
+            ]);
             const callDataWithDefaults = await BaseContract._applyDefaultsToTxDataAsync(
-            {
-            to: self.address,
-            ...callData,
-            data: encodedData,
-            },
-            self._web3Wrapper.getContractDefaults(),
+                {
+                    to: self.address,
+                    ...callData,
+                    data: encodedData,
+                },
+                self._web3Wrapper.getContractDefaults(),
             );
             const rawCallResult = await self._web3Wrapper.callAsync(callDataWithDefaults, defaultBlock);
             BaseContract._throwIfRevertWithReasonCallResult(rawCallResult);
             const abiEncoder = self._lookupAbiEncoder('assetsOf(address)');
             // tslint:disable boolean-naming
             const result = abiEncoder.strictDecodeReturnValue<BigNumber[]
-        >(rawCallResult);
+                >(rawCallResult);
             // tslint:enable boolean-naming
             return result;
-        },};
+        },
+    };
     public totalSupply = {
         async callAsync(
-        callData: Partial<CallData> = {},
+            callData: Partial<CallData> = {},
             defaultBlock?: BlockParam,
         ): Promise<BigNumber
         > {
             const self = this as any as ERC721BaseContract;
             const encodedData = self._strictEncodeArguments('totalSupply()', []);
             const callDataWithDefaults = await BaseContract._applyDefaultsToTxDataAsync(
-            {
-            to: self.address,
-            ...callData,
-            data: encodedData,
-            },
-            self._web3Wrapper.getContractDefaults(),
+                {
+                    to: self.address,
+                    ...callData,
+                    data: encodedData,
+                },
+                self._web3Wrapper.getContractDefaults(),
             );
             const rawCallResult = await self._web3Wrapper.callAsync(callDataWithDefaults, defaultBlock);
             BaseContract._throwIfRevertWithReasonCallResult(rawCallResult);
             const abiEncoder = self._lookupAbiEncoder('totalSupply()');
             // tslint:disable boolean-naming
             const result = abiEncoder.strictDecodeReturnValue<BigNumber
-        >(rawCallResult);
+                >(rawCallResult);
             // tslint:enable boolean-naming
             return result;
-        },};
+        },
+    };
     public tokenByIndex = {
         async callAsync(
             _index: BigNumber,
-        callData: Partial<CallData> = {},
+            callData: Partial<CallData> = {},
             defaultBlock?: BlockParam,
         ): Promise<BigNumber
         > {
             const self = this as any as ERC721BaseContract;
             const encodedData = self._strictEncodeArguments('tokenByIndex(uint256)', [_index
-        ]);
+            ]);
             const callDataWithDefaults = await BaseContract._applyDefaultsToTxDataAsync(
-            {
-            to: self.address,
-            ...callData,
-            data: encodedData,
-            },
-            self._web3Wrapper.getContractDefaults(),
+                {
+                    to: self.address,
+                    ...callData,
+                    data: encodedData,
+                },
+                self._web3Wrapper.getContractDefaults(),
             );
             const rawCallResult = await self._web3Wrapper.callAsync(callDataWithDefaults, defaultBlock);
             BaseContract._throwIfRevertWithReasonCallResult(rawCallResult);
             const abiEncoder = self._lookupAbiEncoder('tokenByIndex(uint256)');
             // tslint:disable boolean-naming
             const result = abiEncoder.strictDecodeReturnValue<BigNumber
-        >(rawCallResult);
+                >(rawCallResult);
             // tslint:enable boolean-naming
             return result;
-        },};
+        },
+    };
     public tokenOfOwnerByIndex = {
         async callAsync(
             _owner: string,
             _index: BigNumber,
-        callData: Partial<CallData> = {},
+            callData: Partial<CallData> = {},
             defaultBlock?: BlockParam,
         ): Promise<BigNumber
         > {
             const self = this as any as ERC721BaseContract;
             const encodedData = self._strictEncodeArguments('tokenOfOwnerByIndex(address,uint256)', [_owner,
-        _index
-        ]);
+                _index
+            ]);
             const callDataWithDefaults = await BaseContract._applyDefaultsToTxDataAsync(
-            {
-            to: self.address,
-            ...callData,
-            data: encodedData,
-            },
-            self._web3Wrapper.getContractDefaults(),
+                {
+                    to: self.address,
+                    ...callData,
+                    data: encodedData,
+                },
+                self._web3Wrapper.getContractDefaults(),
             );
             const rawCallResult = await self._web3Wrapper.callAsync(callDataWithDefaults, defaultBlock);
             BaseContract._throwIfRevertWithReasonCallResult(rawCallResult);
             const abiEncoder = self._lookupAbiEncoder('tokenOfOwnerByIndex(address,uint256)');
             // tslint:disable boolean-naming
             const result = abiEncoder.strictDecodeReturnValue<BigNumber
-        >(rawCallResult);
+                >(rawCallResult);
             // tslint:enable boolean-naming
             return result;
-        },};
+        },
+    };
     public ownerOf = {
         async callAsync(
             _assetId: BigNumber,
-        callData: Partial<CallData> = {},
+            callData: Partial<CallData> = {},
             defaultBlock?: BlockParam,
         ): Promise<string
         > {
             const self = this as any as ERC721BaseContract;
             const encodedData = self._strictEncodeArguments('ownerOf(uint256)', [_assetId
-        ]);
+            ]);
             const callDataWithDefaults = await BaseContract._applyDefaultsToTxDataAsync(
-            {
-            to: self.address,
-            ...callData,
-            data: encodedData,
-            },
-            self._web3Wrapper.getContractDefaults(),
+                {
+                    to: self.address,
+                    ...callData,
+                    data: encodedData,
+                },
+                self._web3Wrapper.getContractDefaults(),
             );
             const rawCallResult = await self._web3Wrapper.callAsync(callDataWithDefaults, defaultBlock);
             BaseContract._throwIfRevertWithReasonCallResult(rawCallResult);
             const abiEncoder = self._lookupAbiEncoder('ownerOf(uint256)');
             // tslint:disable boolean-naming
             const result = abiEncoder.strictDecodeReturnValue<string
-        >(rawCallResult);
+                >(rawCallResult);
             // tslint:enable boolean-naming
             return result;
-        },};
+        },
+    };
     public balanceOf = {
         async callAsync(
             _owner: string,
-        callData: Partial<CallData> = {},
+            callData: Partial<CallData> = {},
             defaultBlock?: BlockParam,
         ): Promise<BigNumber
         > {
             const self = this as any as ERC721BaseContract;
             const encodedData = self._strictEncodeArguments('balanceOf(address)', [_owner
-        ]);
+            ]);
             const callDataWithDefaults = await BaseContract._applyDefaultsToTxDataAsync(
-            {
-            to: self.address,
-            ...callData,
-            data: encodedData,
-            },
-            self._web3Wrapper.getContractDefaults(),
+                {
+                    to: self.address,
+                    ...callData,
+                    data: encodedData,
+                },
+                self._web3Wrapper.getContractDefaults(),
             );
             const rawCallResult = await self._web3Wrapper.callAsync(callDataWithDefaults, defaultBlock);
             BaseContract._throwIfRevertWithReasonCallResult(rawCallResult);
             const abiEncoder = self._lookupAbiEncoder('balanceOf(address)');
             // tslint:disable boolean-naming
             const result = abiEncoder.strictDecodeReturnValue<BigNumber
-        >(rawCallResult);
+                >(rawCallResult);
             // tslint:enable boolean-naming
             return result;
-        },};
+        },
+    };
     public isApprovedForAll = {
         async callAsync(
             _operator: string,
             _assetHolder: string,
-        callData: Partial<CallData> = {},
+            callData: Partial<CallData> = {},
             defaultBlock?: BlockParam,
         ): Promise<boolean
         > {
             const self = this as any as ERC721BaseContract;
             const encodedData = self._strictEncodeArguments('isApprovedForAll(address,address)', [_operator,
-        _assetHolder
-        ]);
+                _assetHolder
+            ]);
             const callDataWithDefaults = await BaseContract._applyDefaultsToTxDataAsync(
-            {
-            to: self.address,
-            ...callData,
-            data: encodedData,
-            },
-            self._web3Wrapper.getContractDefaults(),
+                {
+                    to: self.address,
+                    ...callData,
+                    data: encodedData,
+                },
+                self._web3Wrapper.getContractDefaults(),
             );
             const rawCallResult = await self._web3Wrapper.callAsync(callDataWithDefaults, defaultBlock);
             BaseContract._throwIfRevertWithReasonCallResult(rawCallResult);
             const abiEncoder = self._lookupAbiEncoder('isApprovedForAll(address,address)');
             // tslint:disable boolean-naming
             const result = abiEncoder.strictDecodeReturnValue<boolean
-        >(rawCallResult);
+                >(rawCallResult);
             // tslint:enable boolean-naming
             return result;
-        },};
+        },
+    };
     public getApproved = {
         async callAsync(
             _assetId: BigNumber,
-        callData: Partial<CallData> = {},
+            callData: Partial<CallData> = {},
             defaultBlock?: BlockParam,
         ): Promise<string
         > {
             const self = this as any as ERC721BaseContract;
             const encodedData = self._strictEncodeArguments('getApproved(uint256)', [_assetId
-        ]);
+            ]);
             const callDataWithDefaults = await BaseContract._applyDefaultsToTxDataAsync(
-            {
-            to: self.address,
-            ...callData,
-            data: encodedData,
-            },
-            self._web3Wrapper.getContractDefaults(),
+                {
+                    to: self.address,
+                    ...callData,
+                    data: encodedData,
+                },
+                self._web3Wrapper.getContractDefaults(),
             );
             const rawCallResult = await self._web3Wrapper.callAsync(callDataWithDefaults, defaultBlock);
             BaseContract._throwIfRevertWithReasonCallResult(rawCallResult);
             const abiEncoder = self._lookupAbiEncoder('getApproved(uint256)');
             // tslint:disable boolean-naming
             const result = abiEncoder.strictDecodeReturnValue<string
-        >(rawCallResult);
+                >(rawCallResult);
             // tslint:enable boolean-naming
             return result;
-        },};
+        },
+    };
     public isAuthorized = {
         async callAsync(
             _operator: string,
             _assetId: BigNumber,
-        callData: Partial<CallData> = {},
+            callData: Partial<CallData> = {},
             defaultBlock?: BlockParam,
         ): Promise<boolean
         > {
             const self = this as any as ERC721BaseContract;
             const encodedData = self._strictEncodeArguments('isAuthorized(address,uint256)', [_operator,
-        _assetId
-        ]);
+                _assetId
+            ]);
             const callDataWithDefaults = await BaseContract._applyDefaultsToTxDataAsync(
-            {
-            to: self.address,
-            ...callData,
-            data: encodedData,
-            },
-            self._web3Wrapper.getContractDefaults(),
+                {
+                    to: self.address,
+                    ...callData,
+                    data: encodedData,
+                },
+                self._web3Wrapper.getContractDefaults(),
             );
             const rawCallResult = await self._web3Wrapper.callAsync(callDataWithDefaults, defaultBlock);
             BaseContract._throwIfRevertWithReasonCallResult(rawCallResult);
             const abiEncoder = self._lookupAbiEncoder('isAuthorized(address,uint256)');
             // tslint:disable boolean-naming
             const result = abiEncoder.strictDecodeReturnValue<boolean
-        >(rawCallResult);
+                >(rawCallResult);
             // tslint:enable boolean-naming
             return result;
-        },};
+        },
+    };
     public setApprovalForAll = {
         async sendTransactionAsync(
             _operator: string,
@@ -436,8 +450,8 @@ export class ERC721BaseContract extends BaseContract {
         ): Promise<Response> {
             const self = this as any as ERC721BaseContract;
             const encodedData = self._strictEncodeArguments('setApprovalForAll(address,bool)', [_operator,
-    _authorized
-    ]);
+                _authorized
+            ]);
             const contractDefaults = self._web3Wrapper.getContractDefaults();
             const defaultFromAddress = (await self._web3Wrapper.getAvailableAddressesAsync())[0];
             const txDataWithDefaults = await BaseContract._applyDefaultsToTxDataAsync(
@@ -453,14 +467,14 @@ export class ERC721BaseContract extends BaseContract {
                 self.setApprovalForAll.estimateGasAsync.bind<ERC721BaseContract, any, Promise<number>>(
                     self,
                     _operator,
-    _authorized
-    ,
+                    _authorized
+                    ,
                     estimateGasFactor,
                 ),
             );
             const txHash = await self._web3Wrapper.sendTransactionAsync(txDataWithDefaults);
             const receipt = self._web3Wrapper.awaitTransactionSuccessAsync(txHash);
-    
+
             return new Response(txHash, receipt);
         },
         async estimateGasAsync(
@@ -471,9 +485,9 @@ export class ERC721BaseContract extends BaseContract {
         ): Promise<number> {
             const self = this as any as ERC721BaseContract;
             const encodedData = self._strictEncodeArguments('setApprovalForAll(address,bool)',
-            [_operator,
-    _authorized
-    ]);
+                [_operator,
+                    _authorized
+                ]);
             const contractDefaults = self._web3Wrapper.getContractDefaults();
             const defaultFromAddress = (await self._web3Wrapper.getAvailableAddressesAsync())[0];
             const txDataWithDefaults = await BaseContract._applyDefaultsToTxDataAsync(
@@ -499,39 +513,40 @@ export class ERC721BaseContract extends BaseContract {
         ): string {
             const self = this as any as ERC721BaseContract;
             const abiEncodedTransactionData = self._strictEncodeArguments('setApprovalForAll(address,bool)',
-            [_operator,
-    _authorized
-    ]);
+                [_operator,
+                    _authorized
+                ]);
             return abiEncodedTransactionData;
         },
         async callAsync(
             _operator: string,
             _authorized: boolean,
-        callData: Partial<CallData> = {},
+            callData: Partial<CallData> = {},
             defaultBlock?: BlockParam,
         ): Promise<void
         > {
             const self = this as any as ERC721BaseContract;
             const encodedData = self._strictEncodeArguments('setApprovalForAll(address,bool)', [_operator,
-        _authorized
-        ]);
+                _authorized
+            ]);
             const callDataWithDefaults = await BaseContract._applyDefaultsToTxDataAsync(
-            {
-            to: self.address,
-            ...callData,
-            data: encodedData,
-            },
-            self._web3Wrapper.getContractDefaults(),
+                {
+                    to: self.address,
+                    ...callData,
+                    data: encodedData,
+                },
+                self._web3Wrapper.getContractDefaults(),
             );
             const rawCallResult = await self._web3Wrapper.callAsync(callDataWithDefaults, defaultBlock);
             BaseContract._throwIfRevertWithReasonCallResult(rawCallResult);
             const abiEncoder = self._lookupAbiEncoder('setApprovalForAll(address,bool)');
             // tslint:disable boolean-naming
             const result = abiEncoder.strictDecodeReturnValue<void
-        >(rawCallResult);
+                >(rawCallResult);
             // tslint:enable boolean-naming
             return result;
-        },};
+        },
+    };
     public approve = {
         async sendTransactionAsync(
             _operator: string,
@@ -541,8 +556,8 @@ export class ERC721BaseContract extends BaseContract {
         ): Promise<Response> {
             const self = this as any as ERC721BaseContract;
             const encodedData = self._strictEncodeArguments('approve(address,uint256)', [_operator,
-    _assetId
-    ]);
+                _assetId
+            ]);
             const contractDefaults = self._web3Wrapper.getContractDefaults();
             const defaultFromAddress = (await self._web3Wrapper.getAvailableAddressesAsync())[0];
             const txDataWithDefaults = await BaseContract._applyDefaultsToTxDataAsync(
@@ -558,14 +573,14 @@ export class ERC721BaseContract extends BaseContract {
                 self.approve.estimateGasAsync.bind<ERC721BaseContract, any, Promise<number>>(
                     self,
                     _operator,
-    _assetId
-    ,
+                    _assetId
+                    ,
                     estimateGasFactor,
                 ),
             );
             const txHash = await self._web3Wrapper.sendTransactionAsync(txDataWithDefaults);
             const receipt = self._web3Wrapper.awaitTransactionSuccessAsync(txHash);
-    
+
             return new Response(txHash, receipt);
         },
         async estimateGasAsync(
@@ -576,9 +591,9 @@ export class ERC721BaseContract extends BaseContract {
         ): Promise<number> {
             const self = this as any as ERC721BaseContract;
             const encodedData = self._strictEncodeArguments('approve(address,uint256)',
-            [_operator,
-    _assetId
-    ]);
+                [_operator,
+                    _assetId
+                ]);
             const contractDefaults = self._web3Wrapper.getContractDefaults();
             const defaultFromAddress = (await self._web3Wrapper.getAvailableAddressesAsync())[0];
             const txDataWithDefaults = await BaseContract._applyDefaultsToTxDataAsync(
@@ -604,39 +619,40 @@ export class ERC721BaseContract extends BaseContract {
         ): string {
             const self = this as any as ERC721BaseContract;
             const abiEncodedTransactionData = self._strictEncodeArguments('approve(address,uint256)',
-            [_operator,
-    _assetId
-    ]);
+                [_operator,
+                    _assetId
+                ]);
             return abiEncodedTransactionData;
         },
         async callAsync(
             _operator: string,
             _assetId: BigNumber,
-        callData: Partial<CallData> = {},
+            callData: Partial<CallData> = {},
             defaultBlock?: BlockParam,
         ): Promise<void
         > {
             const self = this as any as ERC721BaseContract;
             const encodedData = self._strictEncodeArguments('approve(address,uint256)', [_operator,
-        _assetId
-        ]);
+                _assetId
+            ]);
             const callDataWithDefaults = await BaseContract._applyDefaultsToTxDataAsync(
-            {
-            to: self.address,
-            ...callData,
-            data: encodedData,
-            },
-            self._web3Wrapper.getContractDefaults(),
+                {
+                    to: self.address,
+                    ...callData,
+                    data: encodedData,
+                },
+                self._web3Wrapper.getContractDefaults(),
             );
             const rawCallResult = await self._web3Wrapper.callAsync(callDataWithDefaults, defaultBlock);
             BaseContract._throwIfRevertWithReasonCallResult(rawCallResult);
             const abiEncoder = self._lookupAbiEncoder('approve(address,uint256)');
             // tslint:disable boolean-naming
             const result = abiEncoder.strictDecodeReturnValue<void
-        >(rawCallResult);
+                >(rawCallResult);
             // tslint:enable boolean-naming
             return result;
-        },};
+        },
+    };
     public safeTransferFrom1 = {
         async sendTransactionAsync(
             _from: string,
@@ -647,9 +663,9 @@ export class ERC721BaseContract extends BaseContract {
         ): Promise<Response> {
             const self = this as any as ERC721BaseContract;
             const encodedData = self._strictEncodeArguments('safeTransferFrom(address,address,uint256)', [_from,
-    _to,
-    _assetId
-    ]);
+                _to,
+                _assetId
+            ]);
             const contractDefaults = self._web3Wrapper.getContractDefaults();
             const defaultFromAddress = (await self._web3Wrapper.getAvailableAddressesAsync())[0];
             const txDataWithDefaults = await BaseContract._applyDefaultsToTxDataAsync(
@@ -665,15 +681,15 @@ export class ERC721BaseContract extends BaseContract {
                 self.safeTransferFrom1.estimateGasAsync.bind<ERC721BaseContract, any, Promise<number>>(
                     self,
                     _from,
-    _to,
-    _assetId
-    ,
+                    _to,
+                    _assetId
+                    ,
                     estimateGasFactor,
                 ),
             );
             const txHash = await self._web3Wrapper.sendTransactionAsync(txDataWithDefaults);
             const receipt = self._web3Wrapper.awaitTransactionSuccessAsync(txHash);
-    
+
             return new Response(txHash, receipt);
         },
         async estimateGasAsync(
@@ -685,10 +701,10 @@ export class ERC721BaseContract extends BaseContract {
         ): Promise<number> {
             const self = this as any as ERC721BaseContract;
             const encodedData = self._strictEncodeArguments('safeTransferFrom(address,address,uint256)',
-            [_from,
-    _to,
-    _assetId
-    ]);
+                [_from,
+                    _to,
+                    _assetId
+                ]);
             const contractDefaults = self._web3Wrapper.getContractDefaults();
             const defaultFromAddress = (await self._web3Wrapper.getAvailableAddressesAsync())[0];
             const txDataWithDefaults = await BaseContract._applyDefaultsToTxDataAsync(
@@ -715,42 +731,43 @@ export class ERC721BaseContract extends BaseContract {
         ): string {
             const self = this as any as ERC721BaseContract;
             const abiEncodedTransactionData = self._strictEncodeArguments('safeTransferFrom(address,address,uint256)',
-            [_from,
-    _to,
-    _assetId
-    ]);
+                [_from,
+                    _to,
+                    _assetId
+                ]);
             return abiEncodedTransactionData;
         },
         async callAsync(
             _from: string,
             _to: string,
             _assetId: BigNumber,
-        callData: Partial<CallData> = {},
+            callData: Partial<CallData> = {},
             defaultBlock?: BlockParam,
         ): Promise<void
         > {
             const self = this as any as ERC721BaseContract;
             const encodedData = self._strictEncodeArguments('safeTransferFrom(address,address,uint256)', [_from,
-        _to,
-        _assetId
-        ]);
+                _to,
+                _assetId
+            ]);
             const callDataWithDefaults = await BaseContract._applyDefaultsToTxDataAsync(
-            {
-            to: self.address,
-            ...callData,
-            data: encodedData,
-            },
-            self._web3Wrapper.getContractDefaults(),
+                {
+                    to: self.address,
+                    ...callData,
+                    data: encodedData,
+                },
+                self._web3Wrapper.getContractDefaults(),
             );
             const rawCallResult = await self._web3Wrapper.callAsync(callDataWithDefaults, defaultBlock);
             BaseContract._throwIfRevertWithReasonCallResult(rawCallResult);
             const abiEncoder = self._lookupAbiEncoder('safeTransferFrom(address,address,uint256)');
             // tslint:disable boolean-naming
             const result = abiEncoder.strictDecodeReturnValue<void
-        >(rawCallResult);
+                >(rawCallResult);
             // tslint:enable boolean-naming
             return result;
-        },};
+        },
+    };
     public safeTransferFrom2 = {
         async sendTransactionAsync(
             _from: string,
@@ -762,10 +779,10 @@ export class ERC721BaseContract extends BaseContract {
         ): Promise<Response> {
             const self = this as any as ERC721BaseContract;
             const encodedData = self._strictEncodeArguments('safeTransferFrom(address,address,uint256,bytes)', [_from,
-    _to,
-    _assetId,
-    _userData
-    ]);
+                _to,
+                _assetId,
+                _userData
+            ]);
             const contractDefaults = self._web3Wrapper.getContractDefaults();
             const defaultFromAddress = (await self._web3Wrapper.getAvailableAddressesAsync())[0];
             const txDataWithDefaults = await BaseContract._applyDefaultsToTxDataAsync(
@@ -781,16 +798,16 @@ export class ERC721BaseContract extends BaseContract {
                 self.safeTransferFrom2.estimateGasAsync.bind<ERC721BaseContract, any, Promise<number>>(
                     self,
                     _from,
-    _to,
-    _assetId,
-    _userData
-    ,
+                    _to,
+                    _assetId,
+                    _userData
+                    ,
                     estimateGasFactor,
                 ),
             );
             const txHash = await self._web3Wrapper.sendTransactionAsync(txDataWithDefaults);
             const receipt = self._web3Wrapper.awaitTransactionSuccessAsync(txHash);
-    
+
             return new Response(txHash, receipt);
         },
         async estimateGasAsync(
@@ -803,11 +820,11 @@ export class ERC721BaseContract extends BaseContract {
         ): Promise<number> {
             const self = this as any as ERC721BaseContract;
             const encodedData = self._strictEncodeArguments('safeTransferFrom(address,address,uint256,bytes)',
-            [_from,
-    _to,
-    _assetId,
-    _userData
-    ]);
+                [_from,
+                    _to,
+                    _assetId,
+                    _userData
+                ]);
             const contractDefaults = self._web3Wrapper.getContractDefaults();
             const defaultFromAddress = (await self._web3Wrapper.getAvailableAddressesAsync())[0];
             const txDataWithDefaults = await BaseContract._applyDefaultsToTxDataAsync(
@@ -835,11 +852,11 @@ export class ERC721BaseContract extends BaseContract {
         ): string {
             const self = this as any as ERC721BaseContract;
             const abiEncodedTransactionData = self._strictEncodeArguments('safeTransferFrom(address,address,uint256,bytes)',
-            [_from,
-    _to,
-    _assetId,
-    _userData
-    ]);
+                [_from,
+                    _to,
+                    _assetId,
+                    _userData
+                ]);
             return abiEncodedTransactionData;
         },
         async callAsync(
@@ -847,33 +864,34 @@ export class ERC721BaseContract extends BaseContract {
             _to: string,
             _assetId: BigNumber,
             _userData: string,
-        callData: Partial<CallData> = {},
+            callData: Partial<CallData> = {},
             defaultBlock?: BlockParam,
         ): Promise<void
         > {
             const self = this as any as ERC721BaseContract;
             const encodedData = self._strictEncodeArguments('safeTransferFrom(address,address,uint256,bytes)', [_from,
-        _to,
-        _assetId,
-        _userData
-        ]);
+                _to,
+                _assetId,
+                _userData
+            ]);
             const callDataWithDefaults = await BaseContract._applyDefaultsToTxDataAsync(
-            {
-            to: self.address,
-            ...callData,
-            data: encodedData,
-            },
-            self._web3Wrapper.getContractDefaults(),
+                {
+                    to: self.address,
+                    ...callData,
+                    data: encodedData,
+                },
+                self._web3Wrapper.getContractDefaults(),
             );
             const rawCallResult = await self._web3Wrapper.callAsync(callDataWithDefaults, defaultBlock);
             BaseContract._throwIfRevertWithReasonCallResult(rawCallResult);
             const abiEncoder = self._lookupAbiEncoder('safeTransferFrom(address,address,uint256,bytes)');
             // tslint:disable boolean-naming
             const result = abiEncoder.strictDecodeReturnValue<void
-        >(rawCallResult);
+                >(rawCallResult);
             // tslint:enable boolean-naming
             return result;
-        },};
+        },
+    };
     public transferFrom = {
         async sendTransactionAsync(
             _from: string,
@@ -884,9 +902,9 @@ export class ERC721BaseContract extends BaseContract {
         ): Promise<Response> {
             const self = this as any as ERC721BaseContract;
             const encodedData = self._strictEncodeArguments('transferFrom(address,address,uint256)', [_from,
-    _to,
-    _assetId
-    ]);
+                _to,
+                _assetId
+            ]);
             const contractDefaults = self._web3Wrapper.getContractDefaults();
             const defaultFromAddress = (await self._web3Wrapper.getAvailableAddressesAsync())[0];
             const txDataWithDefaults = await BaseContract._applyDefaultsToTxDataAsync(
@@ -902,15 +920,15 @@ export class ERC721BaseContract extends BaseContract {
                 self.transferFrom.estimateGasAsync.bind<ERC721BaseContract, any, Promise<number>>(
                     self,
                     _from,
-    _to,
-    _assetId
-    ,
+                    _to,
+                    _assetId
+                    ,
                     estimateGasFactor,
                 ),
             );
             const txHash = await self._web3Wrapper.sendTransactionAsync(txDataWithDefaults);
             const receipt = self._web3Wrapper.awaitTransactionSuccessAsync(txHash);
-    
+
             return new Response(txHash, receipt);
         },
         async estimateGasAsync(
@@ -922,10 +940,10 @@ export class ERC721BaseContract extends BaseContract {
         ): Promise<number> {
             const self = this as any as ERC721BaseContract;
             const encodedData = self._strictEncodeArguments('transferFrom(address,address,uint256)',
-            [_from,
-    _to,
-    _assetId
-    ]);
+                [_from,
+                    _to,
+                    _assetId
+                ]);
             const contractDefaults = self._web3Wrapper.getContractDefaults();
             const defaultFromAddress = (await self._web3Wrapper.getAvailableAddressesAsync())[0];
             const txDataWithDefaults = await BaseContract._applyDefaultsToTxDataAsync(
@@ -952,69 +970,70 @@ export class ERC721BaseContract extends BaseContract {
         ): string {
             const self = this as any as ERC721BaseContract;
             const abiEncodedTransactionData = self._strictEncodeArguments('transferFrom(address,address,uint256)',
-            [_from,
-    _to,
-    _assetId
-    ]);
+                [_from,
+                    _to,
+                    _assetId
+                ]);
             return abiEncodedTransactionData;
         },
         async callAsync(
             _from: string,
             _to: string,
             _assetId: BigNumber,
-        callData: Partial<CallData> = {},
+            callData: Partial<CallData> = {},
             defaultBlock?: BlockParam,
         ): Promise<void
         > {
             const self = this as any as ERC721BaseContract;
             const encodedData = self._strictEncodeArguments('transferFrom(address,address,uint256)', [_from,
-        _to,
-        _assetId
-        ]);
+                _to,
+                _assetId
+            ]);
             const callDataWithDefaults = await BaseContract._applyDefaultsToTxDataAsync(
-            {
-            to: self.address,
-            ...callData,
-            data: encodedData,
-            },
-            self._web3Wrapper.getContractDefaults(),
+                {
+                    to: self.address,
+                    ...callData,
+                    data: encodedData,
+                },
+                self._web3Wrapper.getContractDefaults(),
             );
             const rawCallResult = await self._web3Wrapper.callAsync(callDataWithDefaults, defaultBlock);
             BaseContract._throwIfRevertWithReasonCallResult(rawCallResult);
             const abiEncoder = self._lookupAbiEncoder('transferFrom(address,address,uint256)');
             // tslint:disable boolean-naming
             const result = abiEncoder.strictDecodeReturnValue<void
-        >(rawCallResult);
+                >(rawCallResult);
             // tslint:enable boolean-naming
             return result;
-        },};
+        },
+    };
     public static async deployAsync(
         bytecode: string,
         abi: ContractAbi,
         supportedProvider: SupportedProvider,
         txDefaults: Partial<TxData>,
-            name: string,
-            symbol: string,
+        name: string,
+        symbol: string,
     ): Promise<ERC721BaseContract> {
         const provider = providerUtils.standardizeOrThrow(supportedProvider);
         const constructorAbi = BaseContract._lookupConstructorAbi(abi);
         [name,
-symbol
-] = BaseContract._formatABIDataItemList(
+            symbol
+        ] = BaseContract._formatABIDataItemList(
             constructorAbi.inputs,
             [name,
-symbol
-],
+                symbol
+            ],
             BaseContract._bigNumberToString,
         );
         const iface = new ethers.utils.Interface(abi);
         const deployInfo = iface.deployFunction;
         const txData = deployInfo.encode(bytecode, [name,
-symbol
-]);
+            symbol
+        ]);
         const web3Wrapper = new Web3Wrapper(provider);
         const txDataWithDefaults = await BaseContract._applyDefaultsToTxDataAsync(
-            {data: txData},
+            { data: txData },
             txDefaults,
             web3Wrapper.estimateGasAsync.bind(web3Wrapper),
         );
@@ -1024,8 +1043,8 @@ symbol
         logUtils.log(`ERC721Base successfully deployed at ${txReceipt.contractAddress}`);
         const contractInstance = new ERC721BaseContract(abi, txReceipt.contractAddress as string, provider, txDefaults);
         contractInstance.constructorArgs = [name,
-symbol
-];
+            symbol
+        ];
         return contractInstance;
     }
     constructor(abi: ContractAbi, address: string, supportedProvider: SupportedProvider, txDefaults?: Partial<TxData>, defaultEstimateGasFactor?: number) {

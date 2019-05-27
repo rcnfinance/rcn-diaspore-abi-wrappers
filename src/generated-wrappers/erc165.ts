@@ -19,30 +19,30 @@ export class ERC165Contract extends BaseContract {
     public supportsInterface = {
         async callAsync(
             interfaceId: string,
-        callData: Partial<CallData> = {},
+            callData: Partial<CallData> = {},
             defaultBlock?: BlockParam,
-        ): Promise<boolean
-        > {
+        ): Promise<boolean> {
             const self = this as any as ERC165Contract;
             const encodedData = self._strictEncodeArguments('supportsInterface(bytes4)', [interfaceId
-        ]);
+            ]);
             const callDataWithDefaults = await BaseContract._applyDefaultsToTxDataAsync(
-            {
-            to: self.address,
-            ...callData,
-            data: encodedData,
-            },
-            self._web3Wrapper.getContractDefaults(),
+                {
+                    to: self.address,
+                    ...callData,
+                    data: encodedData,
+                },
+                self._web3Wrapper.getContractDefaults(),
             );
             const rawCallResult = await self._web3Wrapper.callAsync(callDataWithDefaults, defaultBlock);
             BaseContract._throwIfRevertWithReasonCallResult(rawCallResult);
             const abiEncoder = self._lookupAbiEncoder('supportsInterface(bytes4)');
             // tslint:disable boolean-naming
             const result = abiEncoder.strictDecodeReturnValue<boolean
-        >(rawCallResult);
+                >(rawCallResult);
             // tslint:enable boolean-naming
             return result;
-        },};
+        },
+    };
     public static async deployAsync(
         bytecode: string,
         abi: ContractAbi,
@@ -61,7 +61,7 @@ export class ERC165Contract extends BaseContract {
         const txData = deployInfo.encode(bytecode, []);
         const web3Wrapper = new Web3Wrapper(provider);
         const txDataWithDefaults = await BaseContract._applyDefaultsToTxDataAsync(
-            {data: txData},
+            { data: txData },
             txDefaults,
             web3Wrapper.estimateGasAsync.bind(web3Wrapper),
         );
